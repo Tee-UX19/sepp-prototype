@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckoutPage from './CheckoutPage';
+import CheckoutPage from './components/CheckoutPage';
 import './App.css';
 
 function App() {
