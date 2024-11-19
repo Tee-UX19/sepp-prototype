@@ -9,7 +9,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #ffffff;
+  background-color: #f0f0f0;
   color: #333;
   padding: 20px;
 }
@@ -37,6 +37,5 @@ button:hover {
 }
 
 .container {
-  max-width: 800px;
   margin: 0 auto;
 }
