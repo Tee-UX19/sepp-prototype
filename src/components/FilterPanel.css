@@ -1,0 +1,26 @@
+.filter-panel {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .filter-panel h5 {
+    margin-bottom: 1rem;
+  }
+  
+  .filter-panel .form-label {
+    font-weight: bold;
+  }
+  
+  .filter-panel .form-select,
+  .filter-panel .form-range,
+  .filter-panel .form-check-input {
+    margin-bottom: 1rem;
+  }
+  
+  .filter-panel .btn {
+    margin-top: 1rem;
+  }
+  
+  .filter-panel .d-flex {
+    margin-bottom: 0.5rem;
+  }
