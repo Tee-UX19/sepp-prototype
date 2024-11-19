@@ -1,0 +1,19 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .container-fluid {
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  .row {
+    height: 100%;
+  }
+  
+  .col-md-9 {
+    height: 100%;
+    overflow-y: auto;
+  }
