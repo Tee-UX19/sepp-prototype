@@ -1,0 +1,11 @@
+.footer {
+    background-color: #333333; /* Dark gray color */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    box-sizing: border-box;
+  }
+  

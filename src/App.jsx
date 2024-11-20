@@ -1,11 +1,13 @@
 import React from 'react';
-import CheckoutPage from './components/CheckoutPage';
-import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <CheckoutPage/>
+    <div className="app-container">
+      <Header />
+      {/* Other components/pages will go here */}
+      <Footer />
     </div>
   );
 }
