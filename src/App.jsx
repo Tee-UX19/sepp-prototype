@@ -1,18 +1,41 @@
-import { useState } from 'react';
-import React from 'react';
-import CartPage from './pages/CartPage';
-import Header from './components/Header'
-import Footer from './components/Footer';
+
+import React, { useState } from 'react';
+import Header from './components/Header';
+import Catalog from './components/Catalog';
+import FilterPanel from './components/FilterPanel';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [filters, setFilters] = useState({
+    category: '',
+    priceRange: [0, 100],
+    brand: '',
+    inStock: false,
+    onSale: false,
+    newArrivals: false,
+  });
+
+  const [cartCount, setCartCount] = useState(0);
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  };
+
   return (
-    <div className="App">
-        <Header />
-        <CartPage />
-        <Footer />
+    <div className="app-container">
+      <Header cartCount={cartCount} />
+      <div className="container-fluid mt-4">
+        <div className="row">
+          <div className="col-md-3">
+            <FilterPanel filters={filters} onFilterChange={handleFilterChange} />
+          </div>
+          <div className="col-md-9">
+            <Catalog filters={filters} />
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
