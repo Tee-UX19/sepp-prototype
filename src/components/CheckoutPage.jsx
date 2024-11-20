@@ -1,24 +1,14 @@
 import React from 'react';
-import './CheckoutPage.css'
+import members from '../data/Members.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CheckoutPage = () => {
 
   const deadline = 'Thursday 21st November, 17:00'
 
-  const members = [
-    { name: 'User1 (YOU)', amountOwed: '£15', amountPaid: '£10', profilePic: 'https://placehold.co/150'},
-    { name: 'User2', amountOwed: '£15', amountPaid: '£10', profilePic: 'https://placehold.co/150'},
-    { name: 'User3', amountOwed: '£15', amountPaid: '£10', profilePic: 'https://placehold.co/150'},
-    { name: 'User4', amountOwed: '£15', amountPaid: '£10', profilePic: 'https://placehold.co/150'},
-    { name: 'User5', amountOwed: '£15', amountPaid: '£10', profilePic: 'https://placehold.co/150'},
-    { name: 'User6', amountOwed: '£15', amountPaid: '£10', profilePic: 'https://placehold.co/150'},
-    { name: 'User7', amountOwed: '£15', amountPaid: '£10', profilePic: 'https://placehold.co/150'},
-  ];
-
   return (
     <div className='container-fluid py-2 overflow-hidden'>
-      <h1>Delivery due: {deadline}</h1>
+      <h1 className='p-3'>Delivery due: {deadline}</h1>
       <div className='row flex-row flex-nowrap overflow-auto' style={{gap:'10px'}}>
       {members.map((member, index) => (
         <div key={index} className='card p-4' style={{ width:'300px', height:'350px', flex:'0 0 auto'}}>
@@ -35,7 +25,7 @@ const CheckoutPage = () => {
       </div>
       <button
         type='button'
-        class='btn btn-primary fw-bold shadow btn-lg'
+        className='btn btn-primary fw-bold shadow btn-lg mt-4 mx-auto p-4'
         onClick={() => alert('Redirecting to payment service...')}
       >
         Pay Your Share
