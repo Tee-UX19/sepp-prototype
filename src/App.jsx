@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Catalog from './components/Catalog';
 import FilterPanel from './components/FilterPanel';
 import './App.css';
@@ -11,6 +10,8 @@ const App = () => {
     priceRange: [0, 100],
     brand: '',
     inStock: false,
+    onSale: false,
+    newArrivals: false,
   });
 
   const [cartCount, setCartCount] = useState(0);
@@ -28,11 +29,10 @@ const App = () => {
             <FilterPanel filters={filters} onFilterChange={handleFilterChange} />
           </div>
           <div className="col-md-9">
-            <Catalog />
+            <Catalog filters={filters} />
           </div>
         </div>
       </div>
-      
     </div>
   );
 };
