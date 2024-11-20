@@ -2,10 +2,13 @@
     background-color: #333333; /* Dark gray color */
     color: white;
     text-align: center;
-    padding: 15px 0;
+    padding: 5px 0;
     width: 100%;
     position: fixed;
     bottom: 0;
     box-sizing: border-box;
-  }
-  
+    height: 60px; /* Fixed height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
