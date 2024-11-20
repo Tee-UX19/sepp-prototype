@@ -1,8 +1,0 @@
-[
-    { "name": "User1 (YOU)", "amountOwed": "£15", "amountPaid": "£10", "profilePic": "https://placehold.co/150"},
-    { "name": "User2", "amountOwed": "£15", "amountPaid": "£10", "profilePic": "https://placehold.co/150"},
-    { "name": "User3", "amountOwed": "£15", "amountPaid": "£10", "profilePic": "https://placehold.co/150"},
-    { "name": "User4", "amountOwed": "£15", "amountPaid": "£10", "profilePic": "https://placehold.co/150"},
-    { "name": "User5", "amountOwed": "£15", "amountPaid": "£10", "profilePic": "https://placehold.co/150"},
-    { "name": "User6", "amountOwed": "£15", "amountPaid": "£10", "profilePic": "https://placehold.co/150"}
-]

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./CartPage.css";
 
-const CartPage = () => {
+const CartPage = ({ setCurrentPage }) => {
     const [cartItems, setCartItems] = useState([
         {
             id: 1,
@@ -154,7 +154,10 @@ const CartPage = () => {
                     <span>Share: £{parseFloat(totals.totalShare).toFixed(2)}</span>
                     <span>Total: £{parseFloat(totals.totalPrice).toFixed(2)}</span>
                 </div>
-                <button className="checkout-button">Checkout</button>
+                <button
+                    className="checkout-button"
+                    onClick={() => setCurrentPage('CheckoutPage')}
+                />
             </div>
         </div>
     );
