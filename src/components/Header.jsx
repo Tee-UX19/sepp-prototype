@@ -1,8 +1,11 @@
 import React from 'react';
 import './Header.css';
+import cartSVG from '../assets/cart.svg';
 
 function Header() {
-  const handleLogoClick = () => {
+  const [cartCount, setCartCount] = React.useState(0);
+
+  const handleCartClick = () => {
     console.log('Logo clicked');
   };
 
@@ -16,7 +19,7 @@ function Header() {
 
   return (
     <header className="header">
-      <button className="logo-button" onClick={handleLogoClick}>
+      <button className="logo-button" onClick={handleCartClick}>
         {/* ADD LOGO HERE */}
         <img src="path-to-your-logo.png" alt="Logo" className="logo-image" />
       </button>
@@ -26,12 +29,13 @@ function Header() {
         placeholder="Search..."
         onChange={handleSearchChange}
       />
-      <button className="profile-button" onClick={handleProfileClick}>
+      <button className="cart-button" onClick={handleProfileClick}>
         <img
-          src="path-to-your-profile-icon.png"
-          alt="Profile Icon"
-          className="profile-icon"
+          src={cartSVG}
+          alt="Cart"
+          className="cart-icon"
         />
+       <span className="cart-count">{cartCount}</span>
       </button>
     </header>
   );
