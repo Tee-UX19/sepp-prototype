@@ -9,7 +9,7 @@ const CheckoutPage = () => {
   return (
     <div className='container-fluid py-2 overflow-hidden'>
       <h1 className='p-3'>Delivery due: {deadline}</h1>
-      <div className='row flex-row flex-nowrap overflow-auto' style={{gap:'10px'}}>
+      <div className='row flex-row flex-nowrap overflow-auto m-2' style={{gap:'10px'}}>
       {members.map((member, index) => (
         <div key={index} className='card p-4' style={{ width:'300px', height:'350px', flex:'0 0 auto'}}>
           <h3 className='card-title text-center'>{member.name}</h3>
