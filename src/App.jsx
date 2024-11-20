@@ -1,41 +1,29 @@
 
 import React, { useState } from 'react';
-import Header from './components/Header';
-import Catalog from './components/Catalog';
-import FilterPanel from './components/FilterPanel';
+import CataloguePage from './pages/CataloguePage';
+import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
 import './App.css';
 
 const App = () => {
-  const [filters, setFilters] = useState({
-    category: '',
-    priceRange: [0, 100],
-    brand: '',
-    inStock: false,
-    onSale: false,
-    newArrivals: false,
-  });
-
-  const [cartCount, setCartCount] = useState(0);
-
-  const handleFilterChange = (newFilters) => {
-    setFilters(newFilters);
+    const [currentPage, setCurrentPage] = useState("CataloguePage");
+  
+    const renderPage = () => {
+      switch (currentPage) {
+        case "CataloguePage":
+          return <CataloguePage setCurrentPage={setCurrentPage} />;
+        case "CartPage":
+          return <CartPage setCurrentPage={setCurrentPage} />;
+        case "CheckoutPage":
+          return <CheckoutPage setCurrentPage={setCurrentPage} />;
+        case "ProductPage":
+          return <ProductPage setCurrentPage={setCurrentPage} />;
+        default:
+          return <CataloguePage />;
+      }
+    };
+  
+    return renderPage();
   };
-
-  return (
-    <div className="app-container">
-      <Header cartCount={cartCount} />
-      <div className="container-fluid mt-4">
-        <div className="row">
-          <div className="col-md-3">
-            <FilterPanel filters={filters} onFilterChange={handleFilterChange} />
-          </div>
-          <div className="col-md-9">
-            <Catalog filters={filters} />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 export default App;

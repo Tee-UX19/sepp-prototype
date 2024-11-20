@@ -1,13 +1,9 @@
 import React from 'react';
 import './Header.css';
-import cartSVG from '../assets/cart.svg';
 import { FaShoppingCart } from "react-icons/fa";
 
-
 function Header() {
-  const [cartCount, setCartCount] = React.useState(0);
-
-  const handleCartClick = () => {
+  const handleLogoClick = () => {
     console.log('Logo clicked');
   };
 
@@ -21,7 +17,7 @@ function Header() {
 
   return (
     <header className="header">
-      <button className="logo-button" onClick={handleCartClick}>
+      <button className="logo-button" onClick={handleLogoClick}>
         {/* ADD LOGO HERE */}
         <img src="path-to-your-logo.png" alt="Logo" className="logo-image" />
       </button>
@@ -31,16 +27,8 @@ function Header() {
         placeholder="Search..."
         onChange={handleSearchChange}
       />
-      <button className="cart-button" onClick={handleProfileClick}>
-        <img
-          src={cartSVG}
-          alt="Cart"
-          className="cart-icon"
-        />
-       <span className="cart-count">{cartCount}</span>
-//       <button className="profile-button" onClick={handleProfileClick}>
-//         <FaShoppingCart style={{ color: "white", fontSize: "2em", margin: "auto 1em" }} />
-
+      <button className="profile-button" onClick={handleProfileClick}>
+        <FaShoppingCart style={{ color: "white", fontSize: "2em", margin: "auto 1em" }} />
       </button>
     </header>
   );

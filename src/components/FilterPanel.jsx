@@ -1,7 +1,7 @@
 // FilterPanel.jsx
 import React, { useState } from 'react';
 import ReactSlider from 'react-slider';
-import './FilterPanel.css';
+import '/src/components/FilterPanel.css';
 
 const FilterPanel = ({ filters, onFilterChange }) => {
   const [localFilters, setLocalFilters] = useState(filters);

@@ -1,6 +1,6 @@
 // Catalog.jsx
 import React from 'react';
-import ItemCard from './itemCard';
+import ItemCard from './ItemCard';
 import './Catalog.css';
 
 const Catalog = ({ filters }) => {
