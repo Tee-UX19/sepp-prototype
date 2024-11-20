@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Catalog from './components/Catalog';
 import FilterPanel from './components/FilterPanel';
 import './App.css';
@@ -14,15 +15,13 @@ const App = () => {
     newArrivals: false,
   });
 
-  const [cartCount, setCartCount] = useState(0);
-
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters);
   };
 
   return (
     <div className="app-container">
-      <Header cartCount={cartCount} />
+      <Header />
       <div className="container-fluid mt-4">
         <div className="row">
           <div className="col-md-3">
@@ -33,6 +32,7 @@ const App = () => {
           </div>
         </div>
       </div>
+      {/* <Footer /> */}
     </div>
   );
 };

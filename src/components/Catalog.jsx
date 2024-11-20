@@ -1,21 +1,10 @@
 // Catalog.jsx
 import React from 'react';
-import ItemCard from './itemCard';
+import ItemCard from './ItemCard';
+import items from '../../data/items.json'; // Adjust the path as needed
 import './Catalog.css';
 
 const Catalog = ({ filters }) => {
-  const items = Array.from({ length: 30 }, (_, index) => ({
-    id: index + 1,
-    name: `Item ${index + 1}`,
-    category: index % 2 === 0 ? 'fruits' : 'vegetables', // Example categories
-    price: parseFloat((Math.random() * 10).toFixed(2)),
-    brand: index % 3 === 0 ? 'brandA' : 'brandB', // Example brands
-    inStock: index % 2 === 0,
-    onSale: index % 4 === 0,
-    newArrivals: index % 5 === 0,
-    image: `https://via.placeholder.com/150?text=Item+${index + 1}`,
-  }));
-
   const filteredItems = items.filter(item => {
     return (
       (filters.category === '' || item.category === filters.category) &&
