@@ -1,18 +1,28 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
+import CataloguePage from './pages/CataloguePage';
 import CartPage from './pages/CartPage';
-import Header from './components/Header'
-import Footer from './components/Footer';
+import CheckoutPage from './pages/CheckoutPage';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-        <Header />
-        <CartPage />
-        <Footer />
-    </div>
-  );
-}
+const App = () => {
+    const [currentPage, setCurrentPage] = useState("CataloguePage");
+  
+    const renderPage = () => {
+      switch (currentPage) {
+        case "CataloguePage":
+          return <CataloguePage setCurrentPage={setCurrentPage} />;
+        case "CartPage":
+          return <CartPage setCurrentPage={setCurrentPage} />;
+        case "CheckoutPage":
+          return <CheckoutPage setCurrentPage={setCurrentPage} />;
+        case "ProductPage":
+          return <ProductPage setCurrentPage={setCurrentPage} />;
+        default:
+          return <CataloguePage />;
+      }
+    };
+  
+    return renderPage();
+  };
 
 export default App;

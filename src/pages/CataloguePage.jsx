@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '/src/components/Header';
-import Catalog from '/src//components/Catalog';
+import Catalog from '/src/components/Catalog';
 import FilterPanel from '/src/components/FilterPanel';
 import './CataloguePage.css';
 
