@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Catalog from './components/Catalog';
 import FilterPanel from './components/FilterPanel';
 import './App.css';
@@ -8,7 +7,7 @@ import './App.css';
 const App = () => {
   const [filters, setFilters] = useState({
     category: '',
-    priceRange: [0, 100],
+    priceRange: [0, 20],
     brand: '',
     inStock: false,
     onSale: false,
@@ -32,7 +31,6 @@ const App = () => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
     </div>
   );
 };

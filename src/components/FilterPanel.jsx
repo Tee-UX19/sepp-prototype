@@ -57,7 +57,7 @@ const FilterPanel = ({ filters, onFilterChange }) => {
           thumbClassName="thumb"
           trackClassName="track"
           min={0}
-          max={100}
+          max={20}
           value={localFilters.priceRange}
           onChange={handlePriceRangeChange}
         />

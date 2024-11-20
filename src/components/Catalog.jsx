@@ -20,11 +20,17 @@ const Catalog = ({ filters }) => {
   return (
     <div className="catalog-container">
       <div className="row row-cols-1 row-cols-md-4 g-4">
-        {filteredItems.map(item => (
-          <div key={item.id} className="col">
-            <ItemCard item={item} />
+        {filteredItems.length > 0 ? (
+          filteredItems.map(item => (
+            <div key={item.id} className="col">
+              <ItemCard item={item} />
+            </div>
+          ))
+        ) : (
+          <div className="col">
+            <p>No items match your filters.</p>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
