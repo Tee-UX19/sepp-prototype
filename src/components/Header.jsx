@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css';
+import { FaShoppingCart } from "react-icons/fa";
 
 function Header() {
   const handleLogoClick = () => {
@@ -27,11 +28,7 @@ function Header() {
         onChange={handleSearchChange}
       />
       <button className="profile-button" onClick={handleProfileClick}>
-        <img
-          src="path-to-your-profile-icon.png"
-          alt="Profile Icon"
-          className="profile-icon"
-        />
+        <FaShoppingCart style={{ color: "white", fontSize: "2em", margin: "auto 1em" }} />
       </button>
     </header>
   );
