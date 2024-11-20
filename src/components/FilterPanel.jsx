@@ -34,6 +34,19 @@ const FilterPanel = ({ filters, onFilterChange }) => {
     onFilterChange(localFilters);
   };
 
+  const handleResetFilters = () => {
+    const defaultFilters = {
+      category: '',
+      priceRange: [0, 20],
+      brand: '',
+      inStock: false,
+      onSale: false,
+      newArrivals: false,
+    };
+    setLocalFilters(defaultFilters);
+    onFilterChange(defaultFilters);
+  };
+
   return (
     <div className="filter-panel bg-light p-3">
       <h5>Filters</h5>
@@ -93,7 +106,8 @@ const FilterPanel = ({ filters, onFilterChange }) => {
           New Arrivals
         </label>
       </div>
-      <button className="btn btn-primary w-100" onClick={handleApplyFilters}>Apply Filters</button>
+      <button className="btn btn-primary w-100 mb-2" onClick={handleApplyFilters}>Apply Filters</button>
+      <button className="btn btn-secondary w-100" onClick={handleResetFilters}>Reset Filters</button>
     </div>
   );
 };

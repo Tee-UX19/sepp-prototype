@@ -7,10 +7,10 @@ import './Catalog.css';
 const Catalog = ({ filters }) => {
   const filteredItems = items.filter(item => {
     return (
-      (filters.category === '' || item.category === filters.category) &&
+      (filters.category === '' || item.category.toLowerCase() === filters.category.toLowerCase()) &&
       item.price >= filters.priceRange[0] &&
       item.price <= filters.priceRange[1] &&
-      (filters.brand === '' || item.brand === filters.brand) &&
+      (filters.brand === '' || item.brand.toLowerCase() === filters.brand.toLowerCase()) &&
       (!filters.inStock || item.inStock) &&
       (!filters.onSale || item.onSale) &&
       (!filters.newArrivals || item.newArrivals)
