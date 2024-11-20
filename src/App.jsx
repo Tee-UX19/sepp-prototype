@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import CataloguePage from './pages/CataloguePage';
 import CartPage from './pages/CartPage';
