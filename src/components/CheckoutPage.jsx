@@ -1,5 +1,5 @@
 import React from 'react';
-import members from '../data/Members.json';
+import members from '../data/Users.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CheckoutPage = () => {

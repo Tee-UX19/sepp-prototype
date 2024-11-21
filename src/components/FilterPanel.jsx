@@ -4,7 +4,15 @@ import ReactSlider from 'react-slider';
 import '/src/components/FilterPanel.css';
 
 const FilterPanel = ({ filters, onFilterChange }) => {
-  const [localFilters, setLocalFilters] = useState(filters);
+  const [localFilters, setLocalFilters] = useState({
+    category: '',
+    priceRange: [0, 100],
+    brand: '',
+    inStock: false,
+    onSale: false,
+    newArrivals: false,
+    ...filters
+  });
 
   const handleCategoryChange = (e) => {
     setLocalFilters({ ...localFilters, category: e.target.value });
