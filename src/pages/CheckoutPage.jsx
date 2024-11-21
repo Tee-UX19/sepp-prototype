@@ -1,25 +1,24 @@
 import React from 'react';
-import members from '/src/data/Users.json';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CheckoutPage = () => {
 
-  const deadline = 'Thursday 21st November, 17:00'
+  const thisOrderID = 1;  // hardcoded right now, can be changed later maybe
 
   return (
     <div className='container-fluid py-2 overflow-hidden'>
       <h1 className='p-3'>Delivery due: {deadline}</h1>
-      <div className='row flex-row flex-nowrap overflow-auto' style={style.members}>
-      {members.map((member, index) => (
+      <div className='row flex-row flex-nowrap overflow-auto' style={style.users}>
+      {orderUsers.map((orderUser, index) => (
         <div key={index} className='card p-4' style={style.cards}>
-          <h3 className='card-title text-center'>{member.name}</h3>
+          <h3 className='card-title text-center'>{orderUser.name}</h3>
           <img 
-            src={member.profilePic}
+            src={orderUser.profilePic}
             className='rounded-circle d-block mx-auto p-3'
-            style={style.memberImage}
+            style={style.userImage}
           />
-          <h4 className='card-text text-center'>Total: {member.amountOwed}</h4>
-          <h4 className='card-text text-center'>Paid: {member.amountPaid}</h4>
+          <h4 className='card-text text-center'>Total: {orderUser.total}</h4>
         </div>
       ))}
       </div>
@@ -36,7 +35,7 @@ const CheckoutPage = () => {
 
 
 const style = {
-    members: {
+    users: {
         gap:'10px'
     },
     cards: {
@@ -44,7 +43,7 @@ const style = {
         height:'350px',
         flex:'0 0 auto'
     },
-    memberImage: {
+    userImage: {
         width: '150px',
         height: '150px',
         objectFit: 'cover'
