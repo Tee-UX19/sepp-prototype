@@ -1,7 +1,7 @@
-import Users from "src/data/Users.json";
-import Orders from "src/data/Orders.json";
-import Items from "src/data/Items.json";
-import OrderItems from "src/data/OrderItems.json";
+import Users from "/src/data/Users.json";
+import Orders from "/src/data/Orders.json";
+import Items from "/src/data/Items.json";
+import OrderItems from "/src/data/OrderItems.json";
 
 export function getCheckoutData(thisOrderID) {
     const order = Orders.find(o => o.OrderID === thisOrderID);
@@ -10,16 +10,16 @@ export function getCheckoutData(thisOrderID) {
         return;
     }
 
-    const { HouseID } = order;
+    const { HouseID, deadline } = order;
     const householdUsers = Users.filter(user => user.HouseID === HouseID);
-    const checkoutData = householdUsers.map(user => ({
+    const userData = householdUsers.map(user => ({
         UserID: user.UserID,
         Name: user.Name,
         Pic: user.Pic,
         Total: 0
     }));
     
-    checkoutData.forEach(user => {
+    userData.forEach(user => {
         const userOrderItems = OrderItems.filter(oi => oi.UserID === user.UserID && oi.OrderID === thisOrderID);
         user.Total = userOrderItems.reduce((sum, orderItem) => {
             const item = Items.find(i => i.ItemID === orderItem.ItemID);
@@ -27,6 +27,9 @@ export function getCheckoutData(thisOrderID) {
         }, 0);
     });
 
-    return checkoutData;
+    return {
+        userData,
+        deadline
+    };
 
 }

@@ -1,10 +1,27 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { getCheckoutData } from '/src/utils/getCheckoutData';
 
 const CheckoutPage = () => {
 
+  const [orderUsers, setOrderUsers] = useState([]);
+  const [deadline, setDeadline] = useState("");
+
   const thisOrderID = 1;  // hardcoded right now, can be changed later maybe
+
+  useEffect(() =>  {
+    const fetchCheckoutData = async () => {
+      console.log("fetchCheckoutData called");
+      const data = await getCheckoutData(thisOrderID);
+      console.log("getCheckoutData called");
+      setOrderUsers(data.userData);
+      console.log("setOrderUsers called");
+      setDeadline(data.deadline);
+      console.log("setDeadline called");
+    };
+
+    fetchCheckoutData();
+  }, [thisOrderID]);
 
   return (
     <div className='container-fluid py-2 overflow-hidden'>
@@ -12,13 +29,13 @@ const CheckoutPage = () => {
       <div className='row flex-row flex-nowrap overflow-auto' style={style.users}>
       {orderUsers.map((orderUser, index) => (
         <div key={index} className='card p-4' style={style.cards}>
-          <h3 className='card-title text-center'>{orderUser.name}</h3>
+          <h3 className='card-title text-center'>{orderUser.Name}</h3>
           <img 
-            src={orderUser.profilePic}
+            src={orderUser.Pic}
             className='rounded-circle d-block mx-auto p-3'
             style={style.userImage}
           />
-          <h4 className='card-text text-center'>Total: {orderUser.total}</h4>
+          <h4 className='card-text text-center'>Total: {orderUser.Total}</h4>
         </div>
       ))}
       </div>
