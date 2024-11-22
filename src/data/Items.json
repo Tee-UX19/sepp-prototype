@@ -1,6 +1,6 @@
 [
     {
-      "ItemID": "1",
+      "ItemID": 1,
       "name": "Gala Apples",
       "category": "Fruits",
       "price": 1.99,
@@ -14,7 +14,7 @@
       
     },
     {
-      "ItemID": "2",
+      "ItemID": 2,
       "name": "2% Milk",
       "category": "Dairy & Eggs",
       "price": 3.49,
@@ -27,7 +27,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "3",
+      "ItemID": 3,
       "name": "Sliced Bread",
       "category": "Bakery",
       "price": 2.29,
@@ -40,7 +40,7 @@
       "newArrivals": true
     },
     {
-      "ItemID": "4",
+      "ItemID": 4,
       "name": "Ground Beef",
       "category": "Meat",
       "price": 5.99,
@@ -53,7 +53,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "5",
+      "ItemID": 5,
       "name": "Cheddar Cheese",
       "category": "Dairy & Eggs",
       "price": 4.29,
@@ -66,7 +66,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "6",
+      "ItemID": 6,
       "name": "Large Eggs",
       "category": "Dairy & Eggs",
       "price": 2.99,
@@ -79,7 +79,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "7",
+      "ItemID": 7,
       "name": "Sourdough Bread",
       "category": "Bakery",
       "price": 3.79,
@@ -92,7 +92,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "8",
+      "ItemID": 8,
       "name": "Boneless Chicken Breast",
       "category": "Meat",
       "price": 6.49,
@@ -105,7 +105,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "9",
+      "ItemID": 9,
       "name": "Broccoli",
       "category": "Vegetables",
       "price": 1.79,
@@ -118,7 +118,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "10",
+      "ItemID": 10,
       "name": "Carrots",
       "category": "Vegetables",
       "price": 1.29,
@@ -131,7 +131,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "11",
+      "ItemID": 11,
       "name": "Avocados",
       "category": "Fruits",
       "price": 1.49,
@@ -144,7 +144,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "12",
+      "ItemID": 12,
       "name": "Bananas",
       "category": "Fruits",
       "price": 0.59,
@@ -157,7 +157,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "13",
+      "ItemID": 13,
       "name": "Orange Juice",
       "category": "Beverages",
       "price": 3.99,
@@ -170,7 +170,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "14",
+      "ItemID": 14,
       "name": "Coffee Beans",
       "category": "Beverages",
       "price": 8.99,
@@ -183,7 +183,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "15",
+      "ItemID": 15,
       "name": "Potato Chips",
       "category": "Snacks",
       "price": 3.29,
@@ -196,7 +196,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "16",
+      "ItemID": 16,
       "name": "Chocolate Chip Cookies",
       "category": "Snacks",
       "price": 4.59,
@@ -209,7 +209,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "17",
+      "ItemID": 17,
       "name": "Ice Cream",
       "category": "Dairy & Eggs",
       "price": 4.99,
@@ -223,7 +223,7 @@
     },
   
     {
-      "ItemID": "18",
+      "ItemID": 18,
       "name": "Lettuce",
       "category": "Vegetables",
       "price": 2.49,
@@ -236,7 +236,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "19",
+      "ItemID": 19,
       "name": "Tomatoes",
       "category": "Vegetables",
       "price": 1.99,
@@ -249,7 +249,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "20",
+      "ItemID": 20,
       "name": "Cucumbers",
       "category": "Vegetables",
       "price": 1.59,
@@ -262,7 +262,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "21",
+      "ItemID": 21,
       "name": "Onions",
       "category": "Vegetables",
       "price": 0.99,
@@ -275,7 +275,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "22",
+      "ItemID": 22,
       "name": "Garlic",
       "category": "Vegetables",
       "price": 2.79,
@@ -288,7 +288,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "23",
+      "ItemID": 23,
       "name": "Potatoes",
       "category": "Vegetables",
       "price": 3.49,
@@ -301,7 +301,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "24",
+      "ItemID": 24,
       "name": "Sweet Potatoes",
       "category": "Vegetables",
       "price": 2.99,
@@ -314,7 +314,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "25",
+      "ItemID": 25,
       "name": "Salmon Fillets",
       "category": "Meat",
       "price": 12.99,
@@ -327,7 +327,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "26",
+      "ItemID": 26,
       "name": "Shrimp",
       "category": "Meat",
       "price": 8.99,
@@ -340,7 +340,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "27",
+      "ItemID": 27,
       "name": "Bacon",
       "category": "Meat",
       "price": 4.99,
@@ -353,7 +353,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "28",
+      "ItemID": 28,
       "name": "Yogurt",
       "category": "Dairy & Eggs",
       "price": 1.29,
@@ -366,7 +366,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "29",
+      "ItemID": 29,
       "name": "Bagels",
       "category": "Bakery",
       "price": 3.99,
@@ -379,7 +379,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "30",
+      "ItemID": 30,
       "name": "Croissants",
       "category": "Bakery",
       "price": 4.59,
@@ -392,7 +392,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "31",
+      "ItemID": 31,
       "name": "Canned Tomatoes",
       "category": "Pantry",
       "price": 1.09,
@@ -405,7 +405,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "32",
+      "ItemID": 32,
       "name": "Pasta",
       "category": "Pantry",
       "price": 1.39,
@@ -418,7 +418,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "33",
+      "ItemID": 33,
       "name": "Rice",
       "category": "Pantry",
       "price": 4.99,
@@ -431,7 +431,7 @@
       "newArrivals": false
     },
     {
-      "ItemID": "34",
+      "ItemID": 34,
       "name": "Olive Oil",
       "category": "Pantry",
       "price": 10.99,

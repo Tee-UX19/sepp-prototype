@@ -11,6 +11,7 @@ const App = () => {
     const [currentPage, setCurrentPage] = useState("CataloguePage");
 
     const renderPage = () => {
+        console.log("renderPage() function activated")
         switch (currentPage) {
             case "CataloguePage":
                 return (
