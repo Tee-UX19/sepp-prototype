@@ -23,6 +23,7 @@ export function getCheckoutData(thisOrderID) {
         const userOrderItems = OrderItems.filter(oi => oi.UserID === user.UserID && oi.OrderID === thisOrderID);
         user.Total = userOrderItems.reduce((sum, orderItem) => {
             const item = Items.find(i => i.ItemID === orderItem.ItemID);
+            if (!item) {console.log("Item not found");}
             return sum + (item ? item.price : 0);
         }, 0);
     });
