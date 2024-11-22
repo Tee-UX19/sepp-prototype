@@ -2,19 +2,14 @@ import React, { useState, useEffect } from "react";
 import styles from "./ProductPage.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const ProductPage = ({ setCurrentPage, primaryColor, secondaryColor }) => {
-  useEffect(() => {
-    // Dynamically set the CSS variables for primary and secondary colors
-    const root = document.documentElement;
-    root.style.setProperty("--primary-color", primaryColor);
-    root.style.setProperty("--secondary-color", secondaryColor);
-  }, [primaryColor, secondaryColor]);
-
+const ProductPage = ({ setCurrentPage, item }) => {
   const handleButtonClick = () => {
     console.log("button clicked");
   };
 
-  const item = {
+  console.log(item);
+
+  /*   const item = {
     ItemID: "1",
     name: "Mild Semi-skimmed Yogurt 1 L",
     subtitle: "Fresh and Juicy",
@@ -42,7 +37,7 @@ const ProductPage = ({ setCurrentPage, primaryColor, secondaryColor }) => {
         fibres: { per100ml: "0.0 g", per150ml: "0.0 g", RI: "" },
       },
     },
-  };
+  }; */
 
   return (
     <div className={styles.container}>

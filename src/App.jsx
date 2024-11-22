@@ -8,7 +8,8 @@ import ProductPage from "./pages/ProductPage";
 import "./App.css";
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState("ProductPage");
+  const [currentPage, setCurrentPage] = useState("CataloguePage");
+  const [currentItem, setCurrentItem] = useState();
 
   const renderPage = () => {
     switch (currentPage) {
@@ -16,7 +17,10 @@ const App = () => {
         return (
           <>
             <Header setCurrentPage={setCurrentPage} />
-            <CataloguePage setCurrentPage={setCurrentPage} />
+            <CataloguePage
+              setCurrentPage={setCurrentPage}
+              setCurrentItem={setCurrentItem}
+            />
             <Footer />
           </>
         );
@@ -39,7 +43,8 @@ const App = () => {
         return (
           <>
             <Header setCurrentPage={setCurrentPage} />
-            <ProductPage setCurrentPage={setCurrentPage} />
+            <ProductPage setCurrentPage={setCurrentPage} item={currentItem} />
+            <Footer />
           </>
         );
       default:
