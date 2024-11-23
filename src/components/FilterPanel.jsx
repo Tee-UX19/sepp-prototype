@@ -83,9 +83,9 @@ const FilterPanel = ({ filters, onFilterChange }) => {
         <label className="form-label">Brand</label>
         <select className="form-select" value={localFilters.brand} onChange={handleBrandChange}>
           <option value="">All Brands</option>
-          <option value="brandA">Brand A</option>
-          <option value="brandB">Brand B</option>
-          <option value="brandC">Brand C</option>
+          <option value="Brand A">Brand A</option>
+          <option value="Brand B">Brand B</option>
+          <option value="Brand C">Brand C</option>
         </select>
       </div>
       <div className="form-check mb-3">
