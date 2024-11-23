@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styles from "./ProductPage.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import handleAddToCart from "/src/utils/handleAddToCart.js";
 
-const ProductPage = ({ setCurrentPage, item }) => {
-  const handleButtonClick = () => {
-    console.log("button clicked");
-  };
+const ProductPage = ({
+    setCurrentPage,
+    item,
+    handleAddItemCounter,
+    orderInfo,
+}) => {
+    const handleButtonClick = () => {
+        console.log("button clicked");
+    };
 
-  console.log(item);
-
-  /*   const item = {
+    /*   const item = {
     ItemID: "1",
     name: "Mild Semi-skimmed Yogurt 1 L",
     subtitle: "Fresh and Juicy",
@@ -39,115 +43,222 @@ const ProductPage = ({ setCurrentPage, item }) => {
     },
   }; */
 
-  return (
-    <div className={styles.container}>
-      {/* Top Container */}
-      <div className={styles.topContainer}>
-        {/* Left Side - Image */}
-        <div className={styles.imageContainer}>
-          <img src={item.image} alt={item.name} className={styles.image} />
-        </div>
+    return (
+        <div className={styles.container}>
+            {/* Top Container */}
+            <div className={styles.topContainer}>
+                {/* Left Side - Image */}
+                <div className={styles.imageContainer}>
+                    <img
+                        src={item.image}
+                        alt={item.name}
+                        className={styles.image}
+                    />
+                </div>
 
-        {/* Right Side - Information */}
-        <div className={styles.infoContainer}>
-          <div className={styles.infoText}>
-            <h1 className={styles.title}>{item.name}</h1>
-            <h3 className={styles.subtitle}>{item.subtitle}</h3>
-            <p className={styles.description}>{item.description}</p>
-            <h3 className={styles.subtitle}>£{item.price} </h3>
-          </div>
-          <button onClick={handleButtonClick} className={styles.button}>
-            Buy Now
-          </button>
-        </div>
-      </div>
+                {/* Right Side - Information */}
+                <div className={styles.infoContainer}>
+                    <div className={styles.infoText}>
+                        <h1 className={styles.title}>{item.name}</h1>
+                        <h3 className={styles.subtitle}>{item.subtitle}</h3>
+                        <p className={styles.description}>{item.description}</p>
+                        <h3 className={styles.subtitle}>£{item.price} </h3>
+                    </div>
 
-      {/* Nutritional Table */}
-      {item.productInformation.hasNutrition && (
-        <div className={styles.tableContainer}>
-          <div>
-            <h2 className={styles.tableHeader}>Allergens</h2>
-            <p className={styles.subtitle}>
-              {item.productInformation.allergens.join(", ")}
-            </p>
-          </div>
-          <div>
-            <h2 className={styles.tableHeader}>Ingredients</h2>
-            <p className={styles.subtitle}>
-              {item.productInformation.ingredients.join(", ")}
-            </p>
-          </div>
-          <h2 className={styles.tableHeader}>Nutritional Table</h2>
-          <table className="table table-hover">
-            <thead>
-              <tr>
-                <th>Nutritional Values</th>
-                <th>per 100 ml</th>
-                <th>per 150 ml</th>
-                <th>RI*</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Energy</td>
-                <td>{item.productInformation.nutritional.energy.per100ml}</td>
-                <td>{item.productInformation.nutritional.energy.per150ml}</td>
-                <td>{item.productInformation.nutritional.energy.RI}</td>
-              </tr>
-              <tr>
-                <td>Energy (kcal)</td>
-                <td>
-                  {item.productInformation.nutritional.energyCal.per100ml}
-                </td>
-                <td>
-                  {item.productInformation.nutritional.energyCal.per150ml}
-                </td>
-                <td>{item.productInformation.nutritional.energyCal.RI}</td>
-              </tr>
-              <tr>
-                <td>Fats</td>
-                <td>{item.productInformation.nutritional.fats.per100ml}</td>
-                <td>{item.productInformation.nutritional.fats.per150ml}</td>
-                <td>{item.productInformation.nutritional.fats.RI}</td>
-              </tr>
-              <tr>
-                <td>of which saturated fatty acids</td>
-                <td>
-                  {item.productInformation.nutritional.saturatedFat.per100ml}
-                </td>
-                <td>
-                  {item.productInformation.nutritional.saturatedFat.per150ml}
-                </td>
-                <td>{item.productInformation.nutritional.saturatedFat.RI}</td>
-              </tr>
-              <tr>
-                <td>Carbohydrates</td>
-                <td>
-                  {item.productInformation.nutritional.carbohydrates.per100ml}
-                </td>
-                <td>
-                  {item.productInformation.nutritional.carbohydrates.per150ml}
-                </td>
-                <td>{item.productInformation.nutritional.carbohydrates.RI}</td>
-              </tr>
-              <tr>
-                <td>of which sugars</td>
-                <td>{item.productInformation.nutritional.sugars.per100ml}</td>
-                <td>{item.productInformation.nutritional.sugars.per150ml}</td>
-                <td>{item.productInformation.nutritional.sugars.RI}</td>
-              </tr>
-              <tr>
-                <td>Fibres</td>
-                <td>{item.productInformation.nutritional.fibres.per100ml}</td>
-                <td>{item.productInformation.nutritional.fibres.per150ml}</td>
-                <td>{item.productInformation.nutritional.fibres.RI}</td>
-              </tr>
-            </tbody>
-          </table>
+                    <button
+                        onClick={() =>
+                            handleAddToCart(
+                                item,
+                                orderInfo,
+                                handleAddItemCounter
+                            )
+                        }
+                        className={styles.button}
+                    >
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+
+            {/* Nutritional Table */}
+            {item.productInformation.hasNutrition && (
+                <div className={styles.tableContainer}>
+                    <div>
+                        <h2 className={styles.tableHeader}>Allergens</h2>
+                        <p className={styles.subtitle}>
+                            {item.productInformation.allergens.join(", ")}
+                        </p>
+                    </div>
+                    <div>
+                        <h2 className={styles.tableHeader}>Ingredients</h2>
+                        <p className={styles.subtitle}>
+                            {item.productInformation.ingredients.join(", ")}
+                        </p>
+                    </div>
+                    <h2 className={styles.tableHeader}>Nutritional Table</h2>
+                    <table className="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nutritional Values</th>
+                                <th>per 100 ml</th>
+                                <th>per 150 ml</th>
+                                <th>RI*</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Energy</td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .energy.per100ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .energy.per150ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .energy.RI
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Energy (kcal)</td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .energyCal.per100ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .energyCal.per150ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .energyCal.RI
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Fats</td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional.fats
+                                            .per100ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional.fats
+                                            .per150ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional.fats
+                                            .RI
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>of which saturated fatty acids</td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .saturatedFat.per100ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .saturatedFat.per150ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .saturatedFat.RI
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Carbohydrates</td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .carbohydrates.per100ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .carbohydrates.per150ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .carbohydrates.RI
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>of which sugars</td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .sugars.per100ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .sugars.per150ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .sugars.RI
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Fibres</td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .fibres.per100ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .fibres.per150ml
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        item.productInformation.nutritional
+                                            .fibres.RI
+                                    }
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default ProductPage;
