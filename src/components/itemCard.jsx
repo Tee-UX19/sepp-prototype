@@ -32,9 +32,9 @@ const ItemCard = ({ item }) => {
             <button className="btn btn-primary" onClick={handleAddToCart}>Add to Cart</button>
           ) : (
             <div className="quantity-controls">
-              <button className="btn btn-secondary" onClick={handleDecrement}>-</button>
+              <button className="btn btn-blue" onClick={handleDecrement}>-</button>
               <span className="quantity">{quantity}</span>
-              <button className="btn btn-secondary" onClick={handleIncrement}>+</button>
+              <button className="btn btn-blue" onClick={handleIncrement}>+</button>
             </div>
           )}
         </div>
