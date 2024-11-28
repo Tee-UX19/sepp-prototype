@@ -1,0 +1,43 @@
+[
+    {
+      "HouseID": 1,
+      "address": "123 Maple Street, Springfield, IL 62704"
+    },
+    {
+      "HouseID": 2,
+      "address": "456 Oak Avenue, Lincoln, NE 68508"
+    },
+    {
+      "HouseID": 3,
+      "address": "789 Pine Road, Austin, TX 73301"
+    },
+    {
+      "HouseID": 4,
+      "address": "321 Birch Boulevard, Denver, CO 80203"
+    },
+    {
+      "HouseID": 5,
+      "address": "654 Cedar Lane, Madison, WI 53703"
+    },
+    {
+      "HouseID": 6,
+      "address": "987 Walnut Drive, Portland, OR 97205"
+    },
+    {
+      "HouseID": 7,
+      "address": "135 Cherry Circle, Seattle, WA 98101"
+    },
+    {
+      "HouseID": 8,
+      "address": "246 Aspen Way, Boston, MA 02108"
+    },
+    {
+      "HouseID": 9,
+      "address": "579 Poplar Court, Nashville, TN 37203"
+    },
+    {
+      "HouseID": 10,
+      "address": "864 Spruce Terrace, Atlanta, GA 30303"
+    }
+  ]
+  

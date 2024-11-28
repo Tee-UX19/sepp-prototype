@@ -1,16 +1,34 @@
-// ItemCard.jsx
-import React from 'react';
-import '/src/components/ItemCard.css';
+import React from "react";
+import "/src/components/ItemCard.css";
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item, setCurrentPage, setCurrentItem }) => {
   return (
     <div className="card">
-      <img src={item.image} alt={item.name} className="card-img-top" loading="lazy" />
+      <div
+        onClick={() => {
+          setCurrentPage("ProductPage");
+          setCurrentItem(item);
+        }}
+      >
+        <img
+          src={item.image}
+          alt={item.name}
+          className="card-img-top"
+          loading="lazy"
+        />
+      </div>
       <div className="card-body">
-        <h5 className="card-title">{item.name}</h5>
+        <div
+          onClick={() => {
+            setCurrentPage("ProductPage");
+            setCurrentItem(item);
+          }}
+        >
+          <h5 className="card-title">{item.name}</h5>
+        </div>
         <div className="card-details">
-            <p className="card-text">${item.price.toFixed(2)}</p>
-            <button className="btn btn-primary">Add to Cart</button>
+          <p className="card-text">${item.price.toFixed(2)}</p>
+          <button className="btn btn-primary">Add to Cart</button>
         </div>
       </div>
     </div>
