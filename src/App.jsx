@@ -21,7 +21,7 @@ const App = () => {
   return (
     <div className="app-container">
       <Header />
-      <div className="container-fluid mt-4">
+      <div className="container-fluid mt-2">
         <div className="row">
           <div className="col-md-3">
             <FilterPanel filters={filters} onFilterChange={handleFilterChange} />
