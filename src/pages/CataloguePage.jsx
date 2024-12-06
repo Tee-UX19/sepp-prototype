@@ -9,6 +9,7 @@ const CataloguePage = ({
     setCurrentItem,
     handleAddItemCounter,
     orderInfo,
+    itemSearch,
 }) => {
     const [filters, setFilters] = useState({
         category: "",

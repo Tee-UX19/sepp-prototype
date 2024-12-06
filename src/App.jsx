@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useState, useEffect } from "react";
 import Header from "/src/components/Header";
 import Footer from "/src/components/Footer";
@@ -17,6 +16,7 @@ const App = () => {
         UserID: 3,
     });
     const [cardCounter, setCardCounter] = useState(0);
+    const [itemSearch, setItemSearch] = useState('');
 
     const handleAddItemCounter = () => {
         setCardCounter(cardCounter + 1);
@@ -40,42 +40,35 @@ const App = () => {
         switch (currentPage) {
             case "CataloguePage":
                 return (
-                    <>
-                        <CataloguePage
-                            setCurrentPage={setCurrentPage}
-                            setCurrentItem={setCurrentItem}
-                            handleAddItemCounter={handleAddItemCounter}
-                            orderInfo={orderInfo}
-                        />
-                    </>
+                    <CataloguePage
+                        setCurrentPage={setCurrentPage}
+                        setCurrentItem={setCurrentItem}
+                        handleAddItemCounter={handleAddItemCounter}
+                        orderInfo={orderInfo}
+                        itemSearch={itemSearch}
+                    />
                 );
             case "CartPage":
                 return (
-                    <>
-                        <CartPage
-                            setCurrentPage={setCurrentPage}
-                            orderInfo={orderInfo}
-                        />
-                    </>
+                    <CartPage
+                        setCurrentPage={setCurrentPage}
+                        orderInfo={orderInfo}
+                    />
                 );
             case "CheckoutPage":
                 return (
-                    <>
-                        <CheckoutPage
-                            orderInfo={orderInfo}
-                        />
-                    </>
+                    <CheckoutPage
+                        orderInfo={orderInfo}
+                    />
                 );
             case "ProductPage":
                 return (
-                    <>
-                        <ProductPage
-                            setCurrentPage={setCurrentPage}
-                            item={currentItem}
-                            handleAddItemCounter={handleAddItemCounter}
-                            orderInfo={orderInfo}
-                        />
-                    </>
+                    <ProductPage
+                        setCurrentPage={setCurrentPage}
+                        item={currentItem}
+                        handleAddItemCounter={handleAddItemCounter}
+                        orderInfo={orderInfo}
+                    />
                 );
             default:
                 return <CataloguePage />;
@@ -84,7 +77,7 @@ const App = () => {
 
     return (
         <>
-            <Header setCurrentPage={setCurrentPage} cardCounter={cardCounter} />
+            <Header setCurrentPage={setCurrentPage} setItemSearch={setItemSearch} cardCounter={cardCounter} />
             {renderPage()}
             <Footer />
         </>
