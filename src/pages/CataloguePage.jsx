@@ -41,6 +41,7 @@ const CataloguePage = ({
                             setCurrentItem={setCurrentItem}
                             handleAddItemCounter={handleAddItemCounter}
                             orderInfo={orderInfo}
+                            itemSearch={itemSearch}
                         />
                     </div>
                 </div>

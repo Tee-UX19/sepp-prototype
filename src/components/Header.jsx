@@ -9,7 +9,7 @@ const Header = ({ setCurrentPage, setItemSearch, cardCounter }) => {
     };
 
     const handleSearchChange = (event) => {
-        setItemSearch(event.target.value); // Update the search term in App's state
+        setItemSearch(event.target.value);
     };
 
     return (
@@ -21,7 +21,7 @@ const Header = ({ setCurrentPage, setItemSearch, cardCounter }) => {
                 type="text"
                 className="search-bar"
                 placeholder="Search..."
-                onChange={handleSearchChange} // Use search handler
+                onChange={handleSearchChange}
             />
             <button
                 className="profile-button"

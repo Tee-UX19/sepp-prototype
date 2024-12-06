@@ -1,3 +1,4 @@
+// ItemCard.jsx
 import React from "react";
 import "/src/components/ItemCard.css";
 import handleAddToCart from "/src/utils/handleAddToCart.js";
@@ -9,14 +10,14 @@ const ItemCard = ({
     handleAddItemCounter,
     orderInfo,
 }) => {
+    const handleNavigateToProduct = () => {
+        setCurrentItem(item);
+        setCurrentPage("ProductPage");
+    };
+
     return (
         <div className="card">
-            <div
-                onClick={() => {
-                    setCurrentPage("ProductPage");
-                    setCurrentItem(item);
-                }}
-            >
+            <div onClick={handleNavigateToProduct} style={{ cursor: "pointer" }}>
                 <img
                     src={item.image}
                     alt={item.name}
@@ -25,12 +26,7 @@ const ItemCard = ({
                 />
             </div>
             <div className="card-body">
-                <div
-                    onClick={() => {
-                        setCurrentPage("ProductPage");
-                        setCurrentItem(item);
-                    }}
-                >
+                <div onClick={handleNavigateToProduct} style={{ cursor: "pointer" }}>
                     <h5 className="card-title">{item.name}</h5>
                 </div>
                 <div className="card-details">
