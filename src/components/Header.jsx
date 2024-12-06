@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import { FaShoppingCart } from "react-icons/fa";
 
-const Header = ({ setCurrentPage, cardCounter }) => {
+const Header = ({ setCurrentPage, setItemSearch, cardCounter }) => {
     const handleLogoClick = () => {
         console.log("Logo clicked");
         setCurrentPage("CataloguePage"); // Optionally navigate to the catalogue
