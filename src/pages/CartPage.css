@@ -1,3 +1,5 @@
+/* src/components/CartPage.css */
+
 .cart-page {
     background-color: #f9f9f9;
     display: flex;
@@ -12,6 +14,22 @@
     width: 90%;
     border-radius: 10px;
     overflow: hidden;
+    padding-top: 20px; /* Added padding for header */
+}
+
+.shopping-cart-header {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Optional: Adjust margins for different screen sizes */
+@media (max-width: 768px) {
+    .shopping-cart-header {
+        font-size: 1.5em;
+    }
 }
 
 .cart-item {
@@ -155,4 +173,23 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+/* Optional: Style for empty cart message */
+.empty-cart {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Optional: Style for error messages */
+.error-message {
+    background-color: #ffe6e6;
+    color: #cc0000;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #cc0000;
+    border-radius: 5px;
+    text-align: center;
 }
