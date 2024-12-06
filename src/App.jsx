@@ -51,13 +51,14 @@ const App = () => {
             case "CartPage":
                 return (
                     <>
-                        <CartPage setCurrentPage={setCurrentPage} />
+                        <CartPage
+                            orderInfo={orderInfo}
+                        />
                     </>
                 );
             case "CheckoutPage":
                 return (
                     <>
-                        <Header setCurrentPage={setCurrentPage} />
                     </>
                 );
             case "ProductPage":
