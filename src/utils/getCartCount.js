@@ -1,8 +1,8 @@
 // src/utils/getCartCount.js
 
-const getCartCount = async () => {
+const getCartCount = async (OrderInfo) => {
     try {
-        const response = await fetch("http://localhost:5000/orderItems/count");
+        const response = await fetch(`http://localhost:5000/orderItems`);
 
         if (!response.ok) {
             console.error(
@@ -13,15 +13,19 @@ const getCartCount = async () => {
         }
 
         const data = await response.json();
+        const filteredData = data.filter((item) => {
+            return (
+                item.OrderID === OrderInfo.OrderID &&
+                item.UserID === OrderInfo.UserID
+            );
+        });
 
-        // Validate the response structure
-        if (typeof data.count !== "number") {
-            console.error("Invalid response format:", data);
-            throw new Error("Invalid response format.");
+        if (1) {
+            console.log(filteredData);
         }
 
-        console.log("Successfully fetched cart count:", data.count);
-        return data.count;
+        console.log("Successfully fetched cart count:", filteredData.length);
+        return filteredData.length;
     } catch (err) {
         console.error("Error fetching cart count:", err);
         throw err; // Re-throw the error to be handled by the caller

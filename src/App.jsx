@@ -24,7 +24,7 @@ const App = () => {
     // Function to fetch and update the cart count
     const refreshCartCount = async () => {
         try {
-            const count = await getCartCount();
+            const count = await getCartCount(orderInfo);
             setCardCounter(count);
         } catch (err) {
             console.error("Failed to fetch cart count:", err);
