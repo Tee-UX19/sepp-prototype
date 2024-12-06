@@ -19,8 +19,9 @@ const App = () => {
     const [itemSearch, setItemSearch] = useState('');
 
     const handleAddItemCounter = () => {
-        setCardCounter(cardCounter + 1);
+        setCardCounter((prevCount) => prevCount + 1);
     };
+    
 
     // Function to fetch and update the cart count
     const refreshCartCount = async () => {
@@ -71,7 +72,15 @@ const App = () => {
                     />
                 );
             default:
-                return <CataloguePage />;
+                return (
+                    <CataloguePage
+                        setCurrentPage={setCurrentPage}
+                        setCurrentItem={setCurrentItem}
+                        handleAddItemCounter={handleAddItemCounter}
+                        orderInfo={orderInfo}
+                        itemSearch={itemSearch}
+                    />
+                );
         }
     };
 
@@ -79,7 +88,6 @@ const App = () => {
         <>
             <Header setCurrentPage={setCurrentPage} setItemSearch={setItemSearch} cardCounter={cardCounter} />
             {renderPage()}
-            <Footer />
         </>
     );
 };

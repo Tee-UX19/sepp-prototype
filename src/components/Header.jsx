@@ -9,7 +9,7 @@ const Header = ({ setCurrentPage, cardCounter }) => {
     };
 
     const handleSearchChange = (event) => {
-        console.log(event.target.value);
+        setItemSearch(event.target.value);
     };
 
     return (

@@ -1,4 +1,4 @@
-// CartPage.jsx
+// src/components/CartPage.jsx
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./CartPage.css";
@@ -193,6 +193,9 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
     return (
         <div className="cart-page">
             <div className="cart-container">
+                {/* Added Shopping Cart Header */}
+                <h2 className="shopping-cart-header">Shopping Cart</h2>
+
                 {error && <div className="error-message">{error}</div>}
 
                 {cartItems.length === 0 && !error ? (
@@ -208,6 +211,12 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
                                 <div
                                     className={`fraction ${activeToggle === item.id ? "hidden" : ""}`}
                                     onClick={() => setActiveToggle(activeToggle === item.id ? null : item.id)}
+                                    role="button"
+                                    tabIndex={0}
+                                    onKeyPress={(e) => {
+                                        if (e.key === 'Enter') setActiveToggle(activeToggle === item.id ? null : item.id);
+                                    }}
+                                    aria-label={`Toggle quantity controls for ${item.name}`}
                                 >
                                     {item.userQuantity}/{item.totalQuantity}
                                 </div>
@@ -273,14 +282,14 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
                 </button>
             </div>
         </div>
-    );
-};
+    )
+    };
 
-CartPage.propTypes = {
-    orderInfo: PropTypes.shape({
-        OrderID: PropTypes.number.isRequired,
-        UserID: PropTypes.number.isRequired,
-    }).isRequired,
-};
+    CartPage.propTypes = {
+        orderInfo: PropTypes.shape({
+            OrderID: PropTypes.number.isRequired,
+            UserID: PropTypes.number.isRequired,
+        }).isRequired,
+    };
 
-export default CartPage;
+    export default CartPage;
