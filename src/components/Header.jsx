@@ -2,10 +2,10 @@ import React from "react";
 import "./Header.css";
 import { FaShoppingCart } from "react-icons/fa";
 
-const Header = ({ setCurrentPage, setItemSearch, cardCounter }) => {
+const Header = ({ setCurrentPage, cardCounter }) => {
     const handleLogoClick = () => {
         console.log("Logo clicked");
-        setCurrentPage("CataloguePage");
+        setCurrentPage("CataloguePage"); // Optionally navigate to the catalogue
     };
 
     const handleSearchChange = (event) => {
@@ -15,7 +15,12 @@ const Header = ({ setCurrentPage, setItemSearch, cardCounter }) => {
     return (
         <header className="header">
             <button className="logo-button" onClick={handleLogoClick}>
-                <img src={"/"} alt="Logo" className="logo-image" />
+                {/* Logo Image */}
+                <img
+                    src="src/assets/white_nobg_logo.png"
+                    alt="Logo"
+                    className="logo-image"
+                />
             </button>
             <input
                 type="text"
@@ -30,11 +35,11 @@ const Header = ({ setCurrentPage, setItemSearch, cardCounter }) => {
                 <FaShoppingCart
                     style={{
                         color: "white",
-                        fontSize: "2em",
+                        fontSize: "3em",
                         margin: "auto 1em",
                     }}
                 />
-                {cardCounter}
+                <span className="cart-count">{cardCounter}</span>
             </button>
         </header>
     );
