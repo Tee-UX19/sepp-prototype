@@ -2,7 +2,7 @@
 
 const handleAddToCart = async (item, orderInfo, handleAddItemCounter) => {
     try {
-        const response = await fetch("http://localhost:5000/orderItems", {
+        const response = await fetch("http://localhost:4141/orderItems", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -6,7 +6,7 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
-const PORT = 5000;
+const PORT = 4141;
 
 const validateIsDataCorrect = false;
 
@@ -62,6 +62,22 @@ app.get("/items", (req, res) => {
         return res.status(500).json({ error: "Failed to read items data." });
     }
     res.json(items);
+});
+
+app.get("/users", (req, res) => {
+    const users = readJSONFile(usersFilePath); // Use the helper function to read users.json
+    if (!users) {
+        return res.status(500).json({ error: "Failed to read users data." });
+    }
+    res.json(users);
+});
+
+app.get("/orders", (req, res) => {
+    const orders = readJSONFile(ordersFilePath); // Use the helper function to read orders.json
+    if (!orders) {
+        return res.status(500).json({ error: "Failed to read orders data." });
+    }
+    res.json(orders);
 });
 
 // Endpoint to add a new order item

@@ -5,6 +5,7 @@ import Footer from "/src/components/Footer";
 import CataloguePage from "./pages/CataloguePage";
 import CartPage from "./pages/CartPage";
 import ProductPage from "./pages/ProductPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import getCartCount from "/src/utils/getCartCount";
 import "./App.css";
 
@@ -52,6 +53,7 @@ const App = () => {
                 return (
                     <>
                         <CartPage
+                            setCurrentPage={setCurrentPage}
                             orderInfo={orderInfo}
                         />
                     </>
@@ -59,6 +61,9 @@ const App = () => {
             case "CheckoutPage":
                 return (
                     <>
+                        <CheckoutPage
+                            orderInfo={orderInfo}
+                        />
                     </>
                 );
             case "ProductPage":

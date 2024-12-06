@@ -1,10 +1,22 @@
-import Users from "/src/data/Users.json";
-import Orders from "/src/data/Orders.json";
-import Items from "/src/data/Items.json";
-import OrderItems from "/src/data/OrderItems.json";
+const [orderItemsResponse, itemsResponse, usersResponse, ordersResponse] = await Promise.all([
+    fetch("http://localhost:4141/orderItems"),
+    fetch("http://localhost:4141/items"),
+    fetch("http://localhost:4141/users"),
+    fetch("http://localhost:4141/orders")
+]);
 
-export function getCheckoutData(thisOrderID) {
-    const order = Orders.find(o => o.OrderID === thisOrderID);
+if (!orderItemsResponse.ok) throw new Error("Failed to fetch order items.");
+if (!itemsResponse.ok) throw new Error("Failed to fetch items.");
+if (!usersResponse.ok) throw new Error("Failed to fetch users.");
+if (!ordersResponse.ok) throw new Error("Failed to fetch orders.");
+
+const OrderItems = await orderItemsResponse.json();
+const Items = await itemsResponse.json();
+const Users = await usersResponse.json();
+const Orders = await ordersResponse.json();
+
+export function getCheckoutData(orderID) {
+    const order = Orders.find(o => o.thisOrderID === orderID);
     if(!order) {
         console.error("Order not found");
         return;
@@ -20,7 +32,7 @@ export function getCheckoutData(thisOrderID) {
     }));
     
     userData.forEach(user => {
-        const userOrderItems = OrderItems.filter(oi => oi.UserID === user.UserID && oi.OrderID === thisOrderID);
+        const userOrderItems = OrderItems.filter(oi => oi.UserID === user.UserID && oi.thisOrderID === orderID);
         user.Total = userOrderItems.reduce((sum, orderItem) => {
             const item = Items.find(i => i.ItemID === orderItem.ItemID);
             if (!item) {console.log("Item not found");}
