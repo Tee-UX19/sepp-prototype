@@ -42,6 +42,19 @@ const FilterPanel = ({ filters, onFilterChange }) => {
     onFilterChange(localFilters);
   };
 
+  const handleResetFilters = () => {
+    const defaultFilters = {
+      category: '',
+      priceRange: [0, 20],
+      brand: '',
+      inStock: false,
+      onSale: false,
+      newArrivals: false,
+    };
+    setLocalFilters(defaultFilters);
+    onFilterChange(defaultFilters);
+  };
+
   return (
     <div className="filter-panel bg-light p-3">
       <h5>Filters</h5>
@@ -65,7 +78,7 @@ const FilterPanel = ({ filters, onFilterChange }) => {
           thumbClassName="thumb"
           trackClassName="track"
           min={0}
-          max={100}
+          max={20}
           value={localFilters.priceRange}
           onChange={handlePriceRangeChange}
         />
@@ -78,9 +91,9 @@ const FilterPanel = ({ filters, onFilterChange }) => {
         <label className="form-label">Brand</label>
         <select className="form-select" value={localFilters.brand} onChange={handleBrandChange}>
           <option value="">All Brands</option>
-          <option value="brandA">Brand A</option>
-          <option value="brandB">Brand B</option>
-          <option value="brandC">Brand C</option>
+          <option value="Brand A">Brand A</option>
+          <option value="Brand B">Brand B</option>
+          <option value="Brand C">Brand C</option>
         </select>
       </div>
       <div className="form-check mb-3">
@@ -101,7 +114,8 @@ const FilterPanel = ({ filters, onFilterChange }) => {
           New Arrivals
         </label>
       </div>
-      <button className="btn btn-primary w-100" onClick={handleApplyFilters}>Apply Filters</button>
+      <button className="btn btn-primary w-100 mb-2" onClick={handleApplyFilters}>Apply Filters</button>
+      <button className="btn btn-secondary w-100" onClick={handleResetFilters}>Reset Filters</button>
     </div>
   );
 };

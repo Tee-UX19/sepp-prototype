@@ -6,6 +6,9 @@
     padding: 20px;
 }
 
-.row {
-    justify-content: center;
-}
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to the left */
+  }
+
