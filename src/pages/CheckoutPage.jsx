@@ -35,7 +35,7 @@ const CheckoutPage = ({ orderInfo }) => {
             className='rounded-circle d-block mx-auto p-3'
             style={style.userImage}
           />
-          <h4 className='card-text text-center'>Total: {orderUser.Total}</h4>
+          <h4 className='card-text text-center'>Total: £{(orderUser.Total).toFixed(2)}</h4>
         </div>
       ))}
       </div>
