@@ -55,6 +55,15 @@ app.get("/orderItems/count", (req, res) => {
     res.json({ count });
 });
 
+// Endpoint to get all items
+app.get("/items", (req, res) => {
+    const items = readJSONFile(itemsFilePath); // Use the helper function to read items.json
+    if (!items) {
+        return res.status(500).json({ error: "Failed to read items data." });
+    }
+    res.json(items);
+});
+
 // Endpoint to add a new order item
 app.post("/orderItems", (req, res) => {
     const { OrderID, ItemID, UserID } = req.body;
@@ -123,6 +132,41 @@ app.post("/orderItems", (req, res) => {
     res.status(201).json(newOrderItem);
 });
 
+// Endpoint to delete one instance of an order item
+app.delete("/orderItems", (req, res) => {
+    const { OrderID, ItemID, UserID } = req.body;
+
+    // Validate the presence of required fields
+    if (OrderID === undefined || ItemID === undefined || UserID === undefined) {
+        return res
+            .status(400)
+            .json({ error: "OrderID, ItemID, and UserID are required." });
+    }
+
+    // Read existing order items
+    const orderItems = readJSONFile(orderItemsFilePath);
+
+    // Find the index of the first matching order item
+    const indexToDelete = orderItems.findIndex(
+        (orderItem) =>
+            orderItem.OrderID === OrderID &&
+            orderItem.ItemID === ItemID &&
+            orderItem.UserID === UserID
+    );
+
+    if (indexToDelete === -1) {
+        return res.status(404).json({ error: "No matching order item found to delete." });
+    }
+
+    // Remove the item at the found index
+    orderItems.splice(indexToDelete, 1);
+
+    // Write the updated order items back to the file
+    writeJSONFile(orderItemsFilePath, orderItems);
+
+    res.status(200).json({ message: "Order item successfully deleted." });
+});
+
 // Endpoint to create a new order
 app.post("/orders", (req, res) => {
     const { HouseID, deadline } = req.body;
@@ -153,7 +197,7 @@ app.post("/orders", (req, res) => {
     // Generate a new OrderID
     const newOrderID =
         orders.length > 0
-            ? Math.max(...orders.map((order) => order.OrderID)) + 1 // Maybe just grab the last order
+            ? Math.max(...orders.map((order) => order.OrderID)) + 1
             : 1;
 
     const newOrder = {

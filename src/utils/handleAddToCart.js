@@ -1,3 +1,5 @@
+// src/utils/handleAddToCart.js
+
 const handleAddToCart = async (item, orderInfo, handleAddItemCounter) => {
     try {
         const response = await fetch("http://localhost:5000/orderItems", {

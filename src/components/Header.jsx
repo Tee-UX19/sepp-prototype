@@ -1,11 +1,11 @@
-import React from 'react';
-import './Header.css';
+import React from "react";
+import "./Header.css";
 import { FaShoppingCart } from "react-icons/fa";
 
-const Header = ({ setCurrentPage }) => {
+const Header = ({ setCurrentPage, cardCounter }) => {
     const handleLogoClick = () => {
-        console.log('Logo clicked');
-        setCurrentPage('CataloguePage'); // Optionally navigate to the catalogue
+        console.log("Logo clicked");
+        setCurrentPage("CataloguePage"); // Optionally navigate to the catalogue
     };
 
     const handleSearchChange = (event) => {
@@ -16,7 +16,7 @@ const Header = ({ setCurrentPage }) => {
         <header className="header">
             <button className="logo-button" onClick={handleLogoClick}>
                 {/* Logo Image */}
-                <img src={'/'} alt="Logo" className="logo-image" />
+                <img src={"/"} alt="Logo" className="logo-image" />
             </button>
             <input
                 type="text"
@@ -26,12 +26,19 @@ const Header = ({ setCurrentPage }) => {
             />
             <button
                 className="profile-button"
-                onClick={() => setCurrentPage('CartPage')}
+                onClick={() => setCurrentPage("CartPage")}
             >
-                <FaShoppingCart style={{ color: "white", fontSize: "2em", margin: "auto 1em" }} />
+                <FaShoppingCart
+                    style={{
+                        color: "white",
+                        fontSize: "2em",
+                        margin: "auto 1em",
+                    }}
+                />
+                {cardCounter}
             </button>
         </header>
     );
-}
+};
 
 export default Header;

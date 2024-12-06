@@ -1,38 +1,7 @@
 [
     {
-        "OrderItemID": 1,
         "OrderID": 1,
         "ItemID": 1,
         "UserID": 1
-    },
-    {
-        "OrderItemID": 2,
-        "OrderID": 1,
-        "ItemID": 3,
-        "UserID": 2
-    },
-    {
-        "OrderItemID": 3,
-        "OrderID": 1,
-        "ItemID": 4,
-        "UserID": 3
-    },
-    {
-        "OrderItemID": 4,
-        "OrderID": 1,
-        "ItemID": 2,
-        "UserID": 4
-    },
-    {
-        "OrderItemID": 5,
-        "OrderID": 1,
-        "ItemID": 6,
-        "UserID": 5
-    },
-    {
-        "OrderItemID": 6,
-        "OrderID": 1,
-        "ItemID": 2,
-        "UserID": 6
     }
 ]
