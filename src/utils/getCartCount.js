@@ -2,7 +2,7 @@
 
 const getCartCount = async (OrderInfo) => {
     try {
-        const response = await fetch(`http://localhost:5000/orderItems`);
+        const response = await fetch(`http://localhost:4141/orderItems`);
 
         if (!response.ok) {
             console.error(

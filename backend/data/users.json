@@ -3,37 +3,37 @@
       "UserID": 1,
       "Name": "Alice Johnson",
       "Pic": "https://placehold.co/150",
-      "HouseID": 101
+      "HouseID": 1
     },
     {
       "UserID": 2,
       "Name": "Bob Smith",
       "Pic": "https://placehold.co/150",
-      "HouseID": 102
+      "HouseID": 1
     },
     {
       "UserID": 3,
       "Name": "Charlie Davis",
       "Pic": "https://placehold.co/150",
-      "HouseID": 103
+      "HouseID": 1
     },
     {
       "UserID": 4,
       "Name": "Diana Prince",
       "Pic": "https://placehold.co/150",
-      "HouseID": 104
+      "HouseID": 1
     },
     {
       "UserID": 5,
       "Name": "Ethan Hunt",
       "Pic": "https://placehold.co/150",
-      "HouseID": 105
+      "HouseID": 1
     },
     {
       "UserID": 6,
       "Name": "Fiona Gallagher",
       "Pic": "https://placehold.co/150",
-      "HouseID": 106
+      "HouseID": 1
     },
     {
       "UserID": 7,
