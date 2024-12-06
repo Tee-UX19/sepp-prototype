@@ -17,9 +17,7 @@ const Header = ({ setCurrentPage, cardCounter }) => {
             <button className="logo-button" onClick={handleLogoClick}>
                 {/* Logo Image */}
                 <img
-                    src={
-                        "https://drive.google.com/file/d/1TZaAt4QHiCoxcJWRmS651Jr8uDMPwAAs/view?usp=drive_link"
-                    }
+                    src="src/assets/white_nobg_logo.png"
                     alt="Logo"
                     className="logo-image"
                 />
@@ -37,11 +35,11 @@ const Header = ({ setCurrentPage, cardCounter }) => {
                 <FaShoppingCart
                     style={{
                         color: "white",
-                        fontSize: "2em",
+                        fontSize: "3em",
                         margin: "auto 1em",
                     }}
                 />
-                {cardCounter}
+                <span className="cart-count">{cardCounter}</span>
             </button>
         </header>
     );
