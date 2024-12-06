@@ -24,6 +24,8 @@ const Catalog = ({ filters }) => {
           filteredItems.map(item => (
             <div key={item.id} className="col">
               <ItemCard item={item} />
+              setCurrentPage={setCurrentPage}
+              setCurrentItem={setCurrentItem}
             </div>
           ))
         ) : (

@@ -1,8 +1,8 @@
 // ItemCard.jsx
-import React, { useState } from 'react';
-import './ItemCard.css';
+import React, { useState } from "react";
+import "./ItemCard.css";
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item, setCurrentPage, setCurrentItem }) => {
   const [quantity, setQuantity] = useState(0);
 
   const handleAddToCart = () => {
@@ -23,18 +23,43 @@ const ItemCard = ({ item }) => {
 
   return (
     <div className="card">
-      <img src={item.image} alt={item.name} className="card-img-top" loading="lazy" />
+      <div
+        onClick={() => {
+          setCurrentPage("ProductPage");
+          setCurrentItem(item);
+        }}
+      >
+        <img
+          src={item.image}
+          alt={item.name}
+          className="card-img-top"
+          loading="lazy"
+        />
+      </div>
       <div className="card-body">
-        <h5 className="card-title">{item.name}</h5>
+        <div
+          onClick={() => {
+            setCurrentPage("ProductPage");
+            setCurrentItem(item);
+          }}
+        >
+          <h5 className="card-title">{item.name}</h5>
+        </div>
         <div className="card-details">
           <p className="card-text">${item.price.toFixed(2)}</p>
           {quantity === 0 ? (
-            <button className="btn btn-primary" onClick={handleAddToCart}>Add to Cart</button>
+            <button className="btn btn-primary" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
           ) : (
             <div className="quantity-controls">
-              <button className="btn btn-blue" onClick={handleDecrement}>-</button>
+              <button className="btn btn-blue" onClick={handleDecrement}>
+                -
+              </button>
               <span className="quantity">{quantity}</span>
-              <button className="btn btn-blue" onClick={handleIncrement}>+</button>
+              <button className="btn btn-blue" onClick={handleIncrement}>
+                +
+              </button>
             </div>
           )}
         </div>

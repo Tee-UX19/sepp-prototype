@@ -7,7 +7,7 @@ import "./CataloguePage.css";
 const CataloguePage = ({ setCurrentPage, setCurrentItem }) => {
   const [filters, setFilters] = useState({
     category: "",
-    priceRange: [0, 100],
+    priceRange: [0, 20],
     brand: "",
     inStock: false,
     onSale: false,
