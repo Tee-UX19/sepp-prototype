@@ -2,26 +2,33 @@ import React from "react";
 import "./Header.css";
 import { FaShoppingCart } from "react-icons/fa";
 
-const Header = ({ setCurrentPage, setItemSearch, cardCounter }) => {
+const Header = ({ setCurrentPage, cardCounter }) => {
     const handleLogoClick = () => {
         console.log("Logo clicked");
-        setCurrentPage("CataloguePage");
+        setCurrentPage("CataloguePage"); // Optionally navigate to the catalogue
     };
 
     const handleSearchChange = (event) => {
-        setItemSearch(event.target.value); // Update the search term in App's state
+        console.log(event.target.value);
     };
 
     return (
         <header className="header">
             <button className="logo-button" onClick={handleLogoClick}>
-                <img src={"/"} alt="Logo" className="logo-image" />
+                {/* Logo Image */}
+                <img
+                    src={
+                        "https://drive.google.com/file/d/1TZaAt4QHiCoxcJWRmS651Jr8uDMPwAAs/view?usp=drive_link"
+                    }
+                    alt="Logo"
+                    className="logo-image"
+                />
             </button>
             <input
                 type="text"
                 className="search-bar"
                 placeholder="Search..."
-                onChange={handleSearchChange} // Use search handler
+                onChange={handleSearchChange}
             />
             <button
                 className="profile-button"
