@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getCheckoutData } from '/src/utils/getCheckoutData';
 
-const CheckoutPage = () => {
+const CheckoutPage = ({ orderInfo }) => {
 
   const [orderUsers, setOrderUsers] = useState([]);
   const [deadline, setDeadline] = useState("");
 
-  const thisOrderID = 1;  // hardcoded right now, can be changed later maybe
-
+  const { orderId, userId } = orderInfo;
+  
   useEffect(() =>  {
     const fetchCheckoutData = async () => {
       console.log("fetchCheckoutData called");
-      const data = await getCheckoutData(thisOrderID);
+      const data = await getCheckoutData(orderId);
       console.log("getCheckoutData called");
       setOrderUsers(data.userData);
       console.log("setOrderUsers called");
@@ -21,7 +21,7 @@ const CheckoutPage = () => {
     };
 
     fetchCheckoutData();
-  }, [thisOrderID]);
+  }, [orderId]);
 
   return (
     <div className='container-fluid py-2 overflow-hidden'>

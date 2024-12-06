@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./CartPage.css";
 
-const CartPage = ({ orderInfo }) => {
+const CartPage = ({ setCurrentPage, orderInfo }) => {
     const [cartItems, setCartItems] = useState([]);
     const [activeToggle, setActiveToggle] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -17,8 +17,8 @@ const CartPage = ({ orderInfo }) => {
             try {
                 // Fetch orderItems and items concurrently
                 const [orderItemsResponse, itemsResponse] = await Promise.all([
-                    fetch("http://localhost:5000/orderItems"),
-                    fetch("http://localhost:5000/items"),
+                    fetch("http://localhost:4141/orderItems"),
+                    fetch("http://localhost:4141/items"),
                 ]);
 
                 if (!orderItemsResponse.ok) throw new Error("Failed to fetch order items.");
@@ -85,7 +85,7 @@ const CartPage = ({ orderInfo }) => {
     // Handle Remove: Deletes one instance of the item
     const handleRemove = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/orderItems`, {
+            const response = await fetch(`http://localhost:4141/orderItems`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ const CartPage = ({ orderInfo }) => {
     // Handle Add Item: Adds one unit of the item
     const handleAddItem = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/orderItems`, {
+            const response = await fetch(`http://localhost:4141/orderItems`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -183,9 +183,7 @@ const CartPage = ({ orderInfo }) => {
 
     // Handle Checkout
     const handleCheckout = () => {
-        // Implement your checkout logic here
-        console.log("Proceeding to checkout with totals:", totals);
-        // For example, navigate to a checkout page or process the payment
+        setCurrentPage('CheckoutPage');
     };
 
     if (isLoading) {
