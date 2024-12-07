@@ -20,7 +20,6 @@ const handleAddToCart = async (item, orderInfo, handleAddItemCounter) => {
         }
         handleAddItemCounter();
         const newOrderItem = await response.json();
-        console.log("Order Item added:", newOrderItem);
     } catch (error) {
         console.error("Error adding item to cart:", error);
     }
