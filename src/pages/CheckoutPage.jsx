@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getCheckoutData } from '/src/utils/getCheckoutData';
-// Optionally, import the CSS file if you choose to separate styles
-// import './CheckoutPage.css';
 
 const CheckoutPage = ({ orderInfo }) => {
 
@@ -19,12 +17,9 @@ const CheckoutPage = ({ orderInfo }) => {
                 const data = await getCheckoutData(orderId);
                 console.log("getCheckoutData called");
                 setOrderUsers(data.userData);
-                console.log("setOrderUsers called");
                 setDeadline(data.deadline);
-                console.log("setDeadline called");
             } catch (error) {
                 console.error("Error fetching checkout data:", error);
-                // Handle error appropriately, e.g., set an error state
             }
         };
 

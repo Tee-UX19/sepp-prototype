@@ -1,21 +1,27 @@
-const [orderItemsResponse, itemsResponse, usersResponse, ordersResponse] = await Promise.all([
-    fetch("http://localhost:4141/orderItems"),
-    fetch("http://localhost:4141/items"),
-    fetch("http://localhost:4141/users"),
-    fetch("http://localhost:4141/orders")
-]);
+export async function getCheckoutData(orderID) {
+    console.log("getCheckoutData called")
 
-if (!orderItemsResponse.ok) throw new Error("Failed to fetch order items.");
-if (!itemsResponse.ok) throw new Error("Failed to fetch items.");
-if (!usersResponse.ok) throw new Error("Failed to fetch users.");
-if (!ordersResponse.ok) throw new Error("Failed to fetch orders.");
+    const [orderItemsResponse, itemsResponse, usersResponse, ordersResponse] = await Promise.all([
+        fetch("http://localhost:4141/orderItems"),
+        fetch("http://localhost:4141/items"),
+        fetch("http://localhost:4141/users"),
+        fetch("http://localhost:4141/orders")
+    ]);
+    
+    if (!orderItemsResponse.ok) throw new Error("Failed to fetch order items.");
+    if (!itemsResponse.ok) throw new Error("Failed to fetch items.");
+    if (!usersResponse.ok) throw new Error("Failed to fetch users.");
+    if (!ordersResponse.ok) throw new Error("Failed to fetch orders.");
+    
+    const OrderItems = await orderItemsResponse.json();
+    console.log("got orderitems");
+    const Items = await itemsResponse.json();
+    console.log("got items");
+    const Users = await usersResponse.json();
+    console.log("got users");
+    const Orders = await ordersResponse.json();
+    console.log("got orders");
 
-const OrderItems = await orderItemsResponse.json();
-const Items = await itemsResponse.json();
-const Users = await usersResponse.json();
-const Orders = await ordersResponse.json();
-
-export function getCheckoutData(orderID) {
     const order = Orders.find(o => o.thisOrderID === orderID);
     if(!order) {
         console.error("Order not found");
