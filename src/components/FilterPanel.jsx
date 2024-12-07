@@ -1,5 +1,6 @@
 // FilterPanel.jsx
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import ReactSlider from 'react-slider';
 import '/src/components/FilterPanel.css';
 import fetchItems from '/src/utils/fetchItems';
@@ -23,6 +24,7 @@ const FilterPanel = ({ filters, onFilterChange }) => {
                 const itemsData = await fetchItems();
                 setItems(itemsData);
             } catch (error) {
+                console.log("Error: ", error)
             }
         };
 
@@ -214,6 +216,18 @@ const FilterPanel = ({ filters, onFilterChange }) => {
             </button>
         </div>
     );
+};
+
+FilterPanel.propTypes = {
+    filters: PropTypes.shape({
+        category: PropTypes.string,
+        priceRange: PropTypes.arrayOf(PropTypes.number),
+        brand: PropTypes.string,
+        inStock: PropTypes.bool,
+        onSale: PropTypes.bool,
+        newArrivals: PropTypes.bool,
+    }).isRequired,
+    onFilterChange: PropTypes.func.isRequired,
 };
 
 export default FilterPanel;

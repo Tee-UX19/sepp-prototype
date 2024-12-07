@@ -1,7 +1,8 @@
 // CataloguePage.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import Catalog from "/src/components/Catalog";
 import FilterPanel from "/src/components/FilterPanel";
+import PropTypes from "prop-types";
 import "./CataloguePage.css";
 
 const CataloguePage = ({
@@ -48,6 +49,17 @@ const CataloguePage = ({
             </div>
         </div>
     );
+};
+
+CataloguePage.propTypes = {
+    setCurrentPage: PropTypes.func.isRequired,
+    setCurrentItem: PropTypes.func.isRequired,
+    handleAddItemCounter: PropTypes.func.isRequired,
+    orderInfo: PropTypes.shape({
+        OrderID: PropTypes.number.isRequired,
+        UserID: PropTypes.number.isRequired,
+    }).isRequired,
+    itemSearch: PropTypes.string.isRequired,
 };
 
 export default CataloguePage;

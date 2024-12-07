@@ -20,10 +20,6 @@ const getCartCount = async (OrderInfo) => {
             );
         });
 
-        if (1) {
-            console.log(filteredData);
-        }
-
         console.log("Successfully fetched cart count:", filteredData.length);
         return filteredData.length;
     } catch (err) {

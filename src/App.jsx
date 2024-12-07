@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Header from "/src/components/Header";
-import Footer from "/src/components/Footer";
 import CataloguePage from "./pages/CataloguePage";
 import CartPage from "./pages/CartPage";
 import ProductPage from "./pages/ProductPage";
@@ -11,7 +10,7 @@ import "./App.css";
 const App = () => {
     const [currentPage, setCurrentPage] = useState("CataloguePage");
     const [currentItem, setCurrentItem] = useState();
-    const [orderInfo, setOrderInfo] = useState({
+    const [orderInfo] = useState({
         OrderID: 2,
         UserID: 3,
     });
@@ -23,19 +22,18 @@ const App = () => {
     };
     
 
-    // Function to fetch and update the cart count
-    const refreshCartCount = async () => {
-        try {
-            const count = await getCartCount(orderInfo);
-            setCardCounter(count);
-        } catch (err) {
-            console.error("Failed to fetch cart count:", err);
-        }
-    };
-
     useEffect(() => {
+        const refreshCartCount = async () => {
+            try {
+                const count = await getCartCount(orderInfo);
+                setCardCounter(count);
+            } catch (err) {
+                console.error("Failed to fetch cart count:", err);
+            }
+        };
         refreshCartCount();
-    }, []);
+    }, [orderInfo]);
+    
 
     const renderPage = () => {
         switch (currentPage) {

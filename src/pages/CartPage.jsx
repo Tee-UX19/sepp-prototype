@@ -1,5 +1,5 @@
 // src/pages/CartPage.jsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./CartPage.css";
 import { FiTrash } from 'react-icons/fi';
@@ -153,8 +153,6 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Failed to add item.');
             }
-
-            const newOrderItem = await response.json();
 
             // Update local state by incrementing the quantities
             setCartItems((prevItems) =>
@@ -315,6 +313,7 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
 };
 
 CartPage.propTypes = {
+    setCurrentPage: PropTypes.func.isRequired,
     orderInfo: PropTypes.shape({
         OrderID: PropTypes.number.isRequired,
         UserID: PropTypes.number.isRequired,
