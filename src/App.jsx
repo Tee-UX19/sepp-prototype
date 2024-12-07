@@ -20,7 +20,7 @@ const App = () => {
     const handleAddItemCounter = () => {
         setCardCounter((prevCount) => prevCount + 1);
     };
-    
+
 
     useEffect(() => {
         const refreshCartCount = async () => {
@@ -33,7 +33,7 @@ const App = () => {
         };
         refreshCartCount();
     }, [orderInfo]);
-    
+
 
     const renderPage = () => {
         switch (currentPage) {
