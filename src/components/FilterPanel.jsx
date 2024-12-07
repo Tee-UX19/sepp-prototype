@@ -24,7 +24,7 @@ const FilterPanel = ({ filters, onFilterChange }) => {
                 const itemsData = await fetchItems();
                 setItems(itemsData);
             } catch (error) {
-                console.log("Error: ", error)
+                console.error("Error: ", error)
             }
         };
 

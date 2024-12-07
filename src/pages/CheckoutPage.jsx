@@ -10,14 +10,12 @@ const CheckoutPage = ({ orderInfo }) => {
     const [orderUsers, setOrderUsers] = useState([]);
     const [deadline, setDeadline] = useState("");
 
-    const { orderId } = orderInfo;
+    const { OrderId } = orderInfo;
 
     useEffect(() => {
         const fetchCheckoutData = async () => {
-            console.log("fetchCheckoutData called");
             try {
-                const data = await getCheckoutData(orderId);
-                console.log("getCheckoutData called");
+                const data = await getCheckoutData(OrderId);
                 setOrderUsers(data.userData);
                 setDeadline(data.deadline);
             } catch (error) {
@@ -26,12 +24,12 @@ const CheckoutPage = ({ orderInfo }) => {
         };
 
         fetchCheckoutData();
-    }, [orderId]);
+    }, [OrderId]);
 
     return (
         <div
             className='container-fluid py-2 overflow-hidden'
-            style={style.container} // Applying the 80px top margin
+            style={style.container}
         >
             <h1 className='p-3'>Delivery due: {deadline}</h1>
             <div className='row flex-row flex-nowrap overflow-auto' style={style.users}>
@@ -92,10 +90,7 @@ const style = {
 };
 
 CheckoutPage.propTypes = {
-    orderInfo: PropTypes.shape({
-        orderId: PropTypes.number.isRequired,
-        userId: PropTypes.number.isRequired,
-    }).isRequired,
+    orderInfo: PropTypes.object.isRequired,
 };
 
 export default CheckoutPage;
