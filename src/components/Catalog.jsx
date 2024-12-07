@@ -1,5 +1,6 @@
 // Catalog.jsx
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import ItemCard from './ItemCard';
 import fetchItems from '/src/utils/fetchItems';
 import './Catalog.css';
@@ -22,7 +23,7 @@ const Catalog = ({
                 const itemsData = await fetchItems();
                 setItems(itemsData);
                 setLoading(false);
-            } catch (err) {
+            } catch {
                 setError("Failed to load items.");
                 setLoading(false);
             }
@@ -30,11 +31,6 @@ const Catalog = ({
 
         getItems();
     }, []);
-
-    // Dynamically determine price range based on fetched items (optional)
-    const prices = useMemo(() => items.map(item => item.price), [items]);
-    const minPrice = Math.min(...prices, 0);
-    const maxPrice = Math.max(...prices, 20);
 
     const filteredItems = useMemo(() => {
         return items.filter((item) => {
@@ -105,6 +101,25 @@ const Catalog = ({
             </div>
         </div>
     );
+};
+
+Catalog.propTypes = {
+    filters: PropTypes.shape({
+        category: PropTypes.string,
+        brand: PropTypes.string,
+        priceRange: PropTypes.arrayOf(PropTypes.number),
+        inStock: PropTypes.bool,
+        onSale: PropTypes.bool,
+        newArrivals: PropTypes.bool,
+    }).isRequired,
+    setCurrentPage: PropTypes.func.isRequired,
+    setCurrentItem: PropTypes.func.isRequired,
+    handleAddItemCounter: PropTypes.func.isRequired,
+    orderInfo: PropTypes.shape({
+        OrderID: PropTypes.number,
+        UserID: PropTypes.number,
+    }).isRequired,
+    itemSearch: PropTypes.string.isRequired,
 };
 
 export default Catalog;

@@ -1,11 +1,12 @@
-import React from "react";
-import "./Header.css";
+// Header.jsx
 import { FaShoppingCart } from "react-icons/fa";
+import PropTypes from 'prop-types';
+import "./Header.css";
 
 const Header = ({ setCurrentPage, setItemSearch, cardCounter }) => {
     const handleLogoClick = () => {
         console.log("Logo clicked");
-        setCurrentPage("CataloguePage"); // Optionally navigate to the catalogue
+        setCurrentPage("CataloguePage");
     };
 
     const handleSearchChange = (event) => {
@@ -43,6 +44,12 @@ const Header = ({ setCurrentPage, setItemSearch, cardCounter }) => {
             </button>
         </header>
     );
+};
+
+Header.propTypes = {
+    setCurrentPage: PropTypes.func.isRequired,
+    setItemSearch: PropTypes.func.isRequired,
+    cardCounter: PropTypes.number.isRequired,
 };
 
 export default Header;

@@ -1,3 +1,4 @@
+// eslint.config.js
 import js from '@eslint/js'
 import globals from 'globals'
 import react from 'eslint-plugin-react'
@@ -10,7 +11,9 @@ export default [
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+      },
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
@@ -33,6 +36,25 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+    },
+  },
+  {
+    files: ['backend/**/*.js'], // Adjust if your backend files are located elsewhere
+    languageOptions: {
+      ecmaVersion: 2020,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'commonjs', // CommonJS module system
+      },
+      globals: {
+        require: 'readonly',
+        __dirname: 'readonly',
+        module: 'readonly',
+        exports: 'readonly',
+      },
+    },
+    rules: {
+      // Optional: Add Node.js specific rules here if needed
     },
   },
 ]

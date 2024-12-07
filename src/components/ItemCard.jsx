@@ -1,5 +1,5 @@
 // ItemCard.jsx
-import React from "react";
+import PropTypes from 'prop-types';
 import "/src/components/ItemCard.css";
 import handleAddToCart from "/src/utils/handleAddToCart.js";
 
@@ -47,6 +47,18 @@ const ItemCard = ({
             </div>
         </div>
     );
+};
+
+ItemCard.propTypes = {
+    setCurrentPage: PropTypes.func.isRequired,
+    item: PropTypes.shape({
+        image: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+    }).isRequired,
+    setCurrentItem: PropTypes.func.isRequired,
+    handleAddItemCounter: PropTypes.func.isRequired,
+    orderInfo: PropTypes.object.isRequired,
 };
 
 export default ItemCard;
