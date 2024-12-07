@@ -9,7 +9,7 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
     const [activeToggle, setActiveToggle] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [visible, setVisible] = useState(false); // For fade-out transition
+    const [visible, setVisible] = useState(false); // For the error transition
 
     const { OrderID, UserID } = orderInfo;
 
@@ -67,12 +67,12 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
                 ).filter(item => item !== null);
 
                 setCartItems(cartItemsArray);
-                setError(null); // Reset error if successful
-                setVisible(false); // Hide error message if present
+                setError(null);
+                setVisible(false);
             } catch (error) {
                 console.error("Error fetching cart data:", error.message);
                 setError(error.message);
-                setVisible(true); // Show error message
+                setVisible(true); 
             } finally {
                 setIsLoading(false);
             }
@@ -82,7 +82,7 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
             fetchCartData();
         } else {
             setError("Invalid order information.");
-            setVisible(true); // Show error message
+            setVisible(true);
             setIsLoading(false);
         }
     }, [OrderID, UserID]);
@@ -91,7 +91,7 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
     useEffect(() => {
         if (error) {
             const timer = setTimeout(() => {
-                setVisible(false); // Start fade-out
+                setVisible(false); // start transition
                 const fadeOutTimer = setTimeout(() => {
                     setError(null);
                 }, 1000);
@@ -134,7 +134,7 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
         } catch (error) {
             console.error(error);
             setError(error.message);
-            setVisible(true); // Show error message
+            setVisible(true);
         }
     };
 
@@ -171,7 +171,7 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
         } catch (error) {
             console.error(error);
             setError(error.message);
-            setVisible(true); // Show error message
+            setVisible(true);
         }
     };
 
