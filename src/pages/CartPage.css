@@ -65,12 +65,16 @@
     opacity: 1;
     pointer-events: auto;
     z-index: 2;
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
 }
 
 .cart-item .left-section {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .cart-item.top-rounded {
@@ -109,8 +113,10 @@
 }
 
 .toggle-controls {
-    position: relative;
-    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
     background: #fff;
     border: 2px solid #0a842c;
     border-radius: 25px;
