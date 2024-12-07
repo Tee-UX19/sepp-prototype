@@ -13,11 +13,8 @@ const CheckoutPage = ({ orderInfo }) => {
     const fetchCheckoutData = async () => {
       console.log("fetchCheckoutData called");
       const data = await getCheckoutData(orderId);
-      console.log("getCheckoutData called");
       setOrderUsers(data.userData);
-      console.log("setOrderUsers called");
       setDeadline(data.deadline);
-      console.log("setDeadline called");
     };
 
     fetchCheckoutData();
