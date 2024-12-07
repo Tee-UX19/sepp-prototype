@@ -1,13 +1,15 @@
-// src/components/CartPage.jsx
+// src/pages/CartPage.jsx
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./CartPage.css";
+import { FiTrash } from 'react-icons/fi';
 
 const CartPage = ({ setCurrentPage, orderInfo }) => {
     const [cartItems, setCartItems] = useState([]);
     const [activeToggle, setActiveToggle] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [visible, setVisible] = useState(false); // For fade-out transition
 
     const { OrderID, UserID } = orderInfo;
 
@@ -50,25 +52,27 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
                         const itemDetails = itemsData.find((item) => item.ItemID === ItemID);
                         return itemDetails
                             ? {
-                                  id: ItemID,
-                                  name: itemDetails.name,
-                                  shelfLife: itemDetails.subtitle || "N/A",
-                                  weight: itemDetails.unit,
-                                  calories: itemDetails.calories || "N/A", // Updated to fetch actual calories
-                                  userQuantity,
-                                  totalQuantity,
-                                  pricePerUnit: parseFloat(itemDetails.price),
-                                  image: itemDetails.image,
-                              }
+                                id: ItemID,
+                                name: itemDetails.name,
+                                shelfLife: itemDetails.subtitle || "N/A",
+                                weight: itemDetails.unit,
+                                calories: itemDetails.calories || "N/A",
+                                userQuantity,
+                                totalQuantity,
+                                pricePerUnit: parseFloat(itemDetails.price),
+                                image: itemDetails.image,
+                            }
                             : null;
                     }
                 ).filter(item => item !== null);
 
                 setCartItems(cartItemsArray);
                 setError(null); // Reset error if successful
+                setVisible(false); // Hide error message if present
             } catch (error) {
                 console.error("Error fetching cart data:", error.message);
                 setError(error.message);
+                setVisible(true); // Show error message
             } finally {
                 setIsLoading(false);
             }
@@ -78,12 +82,29 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
             fetchCartData();
         } else {
             setError("Invalid order information.");
+            setVisible(true); // Show error message
             setIsLoading(false);
         }
     }, [OrderID, UserID]);
 
+    // Handle error message visibility with fade-out
+    useEffect(() => {
+        if (error) {
+            const timer = setTimeout(() => {
+                setVisible(false); // Start fade-out
+                const fadeOutTimer = setTimeout(() => {
+                    setError(null);
+                }, 1000);
+
+                return () => clearTimeout(fadeOutTimer);
+            }, 2000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [error]);
+
     // Handle Remove: Deletes one instance of the item
-    const handleRemove = async (id) => {
+    const handleRemoveItem = async (id) => {
         try {
             const response = await fetch(`http://localhost:4141/orderItems`, {
                 method: 'DELETE',
@@ -103,16 +124,17 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
                 prevItems.map((item) =>
                     item.id === id
                         ? {
-                              ...item,
-                              userQuantity: Math.max(item.userQuantity - 1, 0),
-                              totalQuantity: Math.max(item.totalQuantity - 1, 0),
-                          }
+                            ...item,
+                            userQuantity: Math.max(item.userQuantity - 1, 0),
+                            totalQuantity: Math.max(item.totalQuantity - 1, 0),
+                        }
                         : item
-                ).filter(item => item.totalQuantity > 0) // Remove items with zero totalQuantity
+                ).filter(item => item.totalQuantity > 0)
             );
         } catch (error) {
             console.error(error);
             setError(error.message);
+            setVisible(true); // Show error message
         }
     };
 
@@ -139,16 +161,17 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
                 prevItems.map((item) =>
                     item.id === id
                         ? {
-                              ...item,
-                              userQuantity: item.userQuantity + 1,
-                              totalQuantity: item.totalQuantity + 1,
-                          }
+                            ...item,
+                            userQuantity: item.userQuantity + 1,
+                            totalQuantity: item.totalQuantity + 1,
+                        }
                         : item
                 )
             );
         } catch (error) {
             console.error(error);
             setError(error.message);
+            setVisible(true); // Show error message
         }
     };
 
@@ -193,10 +216,14 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
     return (
         <div className="cart-page">
             <div className="cart-container">
-                {/* Added Shopping Cart Header */}
+                {/* Shopping Cart Header */}
                 <h2 className="shopping-cart-header">Shopping Cart</h2>
 
-                {error && <div className="error-message">{error}</div>}
+                {error && (
+                    <div className={`error-message ${visible ? 'visible' : 'hidden'}`}>
+                        {error}
+                    </div>
+                )}
 
                 {cartItems.length === 0 && !error ? (
                     <div className="empty-cart">Your cart is empty.</div>
@@ -204,67 +231,69 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
                     cartItems.map((item, index) => (
                         <div
                             key={item.id}
-                            className={`cart-item ${index === 0 ? "top-rounded" : index === cartItems.length - 1 ? "bottom-rounded" : ""}`}
+                            className={`cart-item ${index === 0 ? "top-rounded" : index === cartItems.length - 1 ? "bottom-rounded" : ""} ${activeToggle === item.id ? "active" : ""}`}
                         >
-                            {/* Fraction with +/- toggle */}
-                            <div className="fraction-toggle">
-                                <div
-                                    className={`fraction ${activeToggle === item.id ? "hidden" : ""}`}
-                                    onClick={() => setActiveToggle(activeToggle === item.id ? null : item.id)}
-                                    role="button"
-                                    tabIndex={0}
-                                    onKeyPress={(e) => {
-                                        if (e.key === 'Enter') setActiveToggle(activeToggle === item.id ? null : item.id);
-                                    }}
-                                    aria-label={`Toggle quantity controls for ${item.name}`}
-                                >
-                                    {item.userQuantity}/{item.totalQuantity}
-                                </div>
-                                {activeToggle === item.id && (
-                                    <div id={`toggle-${item.id}`} className="toggle-controls expanded">
-                                        <button
-                                            onClick={() => handleRemove(item.id)}
-                                            aria-label={`Remove one ${item.name}`}
-                                        >
-                                            -
-                                        </button>
-                                        <span>{item.userQuantity}</span>
-                                        <button
-                                            onClick={() => handleAddItem(item.id)}
-                                            aria-label={`Add one ${item.name}`}
-                                        >
-                                            +
-                                        </button>
+                            <div className="left-section">
+                                {/* Fraction with +/- toggle */}
+                                <div className="fraction-toggle">
+                                    <div
+                                        className={`fraction ${activeToggle === item.id ? "hidden" : ""}`}
+                                        onClick={() => setActiveToggle(activeToggle === item.id ? null : item.id)}
+                                        role="button"
+                                        tabIndex={0}
+                                        onKeyPress={(e) => {
+                                            if (e.key === 'Enter') setActiveToggle(activeToggle === item.id ? null : item.id);
+                                        }}
+                                        aria-label={`Toggle quantity controls for ${item.name}`}
+                                    >
+                                        {item.userQuantity}/{item.totalQuantity}
                                     </div>
-                                )}
-                            </div>
+                                    {activeToggle === item.id && (
+                                        <div id={`toggle-${item.id}`} className="toggle-controls expanded">
+                                            <button
+                                                onClick={() => handleRemoveItem(item.id)}
+                                                aria-label={`Remove one ${item.name}`}
+                                            >
+                                                -
+                                            </button>
+                                            <span>{item.userQuantity}</span>
+                                            <button
+                                                onClick={() => handleAddItem(item.id)}
+                                                aria-label={`Add one ${item.name}`}
+                                            >
+                                                +
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
 
-                            {/* Image */}
-                            <div className="item-image">
-                                <img src={item.image} alt={`${item.name} image`} />
-                            </div>
+                                {/* Image */}
+                                <div className="item-image">
+                                    <img src={item.image} alt={`${item.name} image`} />
+                                </div>
 
-                            {/* Name and Details */}
-                            <div className="item-details">
-                                <h2>{item.name}</h2>
-                                <p>Shelf Life: {item.shelfLife}</p>
-                                <p>Weight: {item.weight} | Calories: {item.calories}</p>
+                                {/* Name and Details */}
+                                <div className="item-details">
+                                    <h2>{item.name}</h2>
+                                    <p>Shelf Life: {item.shelfLife}</p>
+                                    <p>Weight: {item.weight} | Calories: {item.calories}</p>
+                                </div>
                             </div>
 
                             {/* Pricing and Bin */}
                             <div className="item-pricing">
-                                <div className="pricing">
-                                    <p>Your Share: £{(item.userQuantity * item.pricePerUnit).toFixed(2)}</p>
-                                    <p>Total: £{(item.totalQuantity * item.pricePerUnit).toFixed(2)}</p>
-                                    <p>£{item.pricePerUnit.toFixed(2)}/unit</p>
+                                <div className="pricing-container">
+                                    <div className="pricing">
+                                        <p>Your Share: £{(item.userQuantity * item.pricePerUnit).toFixed(2)}</p>
+                                        <p>Total: £{(item.totalQuantity * item.pricePerUnit).toFixed(2)}</p>
+                                        <p>£{item.pricePerUnit.toFixed(2)}/unit</p>
+                                    </div>
+                                    <FiTrash
+                                        className="remove-icon"
+                                        onClick={() => handleRemoveItem(item.id)}
+                                        aria-label={`Remove one ${item.name} from cart`}
+                                    />
                                 </div>
-                                <button
-                                    className="remove-button"
-                                    onClick={() => handleRemove(item.id)}
-                                    aria-label={`Remove one ${item.name} from cart`}
-                                >
-                                    🗑️
-                                </button>
                             </div>
                         </div>
                     ))
@@ -283,13 +312,13 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
             </div>
         </div>
     )
-    };
+};
 
-    CartPage.propTypes = {
-        orderInfo: PropTypes.shape({
-            OrderID: PropTypes.number.isRequired,
-            UserID: PropTypes.number.isRequired,
-        }).isRequired,
-    };
+CartPage.propTypes = {
+    orderInfo: PropTypes.shape({
+        OrderID: PropTypes.number.isRequired,
+        UserID: PropTypes.number.isRequired,
+    }).isRequired,
+};
 
-    export default CartPage;
+export default CartPage;
