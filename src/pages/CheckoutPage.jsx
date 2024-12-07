@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getCheckoutData } from '/src/utils/getCheckoutData';
+import { FaCcPaypal } from "react-icons/fa";
 
 const CheckoutPage = ({ orderInfo }) => {
 
@@ -53,10 +54,11 @@ const CheckoutPage = ({ orderInfo }) => {
             </div>
             <button
                 type='button'
-                className='btn btn-primary fw-bold shadow btn-lg mt-4 mx-auto d-block'
+                className='btn btn-success fw-bold shadow btn-lg mt-4 mx-auto d-block'
                 style={style.checkoutButton}
                 onClick={() => alert('Redirecting to payment service...')}
             >
+                <FaCcPaypal style={style.paypalButton}/>
                 Pay Your Share
             </button>
         </div>
@@ -82,6 +84,10 @@ const style = {
     },
     checkoutButton: {
         width: '200px',
+    },
+    paypalButton: {
+        fontSize: '4em',
+        padding: '10px'
     }
 };
 
