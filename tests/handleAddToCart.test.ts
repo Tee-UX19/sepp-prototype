@@ -31,7 +31,7 @@ describe('handleAddToCart', () => {
     expect(mockHandleAddItemCounter).toHaveBeenCalledTimes(1);
 
     // Check the console log output (if needed)
-    // You can spy on console.log if you want to test that as well
+    // You can spy on // console.log if you want to test that as well
   });
 
   it('should handle an error when the fetch fails', async () => {

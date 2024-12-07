@@ -1,5 +1,5 @@
 export async function getCheckoutData(orderID) {
-    console.log("getCheckoutData called")
+    // console.log("getCheckoutData called")
 
     const [orderItemsResponse, itemsResponse, usersResponse, ordersResponse] = await Promise.all([
         fetch("http://localhost:4141/orderItems"),
@@ -14,13 +14,13 @@ export async function getCheckoutData(orderID) {
     if (!ordersResponse.ok) throw new Error("Failed to fetch orders.");
     
     const OrderItems = await orderItemsResponse.json();
-    console.log("got orderitems");
+    // console.log("got orderitems");
     const Items = await itemsResponse.json();
-    console.log("got items");
+    // console.log("got items");
     const Users = await usersResponse.json();
-    console.log("got users");
+    // console.log("got users");
     const Orders = await ordersResponse.json();
-    console.log("got orders");
+    // console.log("got orders");
 
     const order = Orders.find(o => o.thisOrderID === orderID);
     if(!order) {
