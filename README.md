@@ -7,7 +7,6 @@ This project is a prototype for a shared grocery delivery service, developed for
 - [Introduction](#introduction)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-<!-- - [Project Structure](#project-structure) -->
 - [Setup and Installation](#setup-and-installation)
 - [Running the Application](#running-the-application)
 - [Dockerization](#dockerization)
@@ -50,43 +49,58 @@ The SSH Shared Grocery Delivery Service allows users to collaboratively manage g
    ```
 
 2. **Install dependencies**
+    ``` sh
    npm install
    cd backend
    npm install
    cd ..
-
+    ```
 ## Running the Application
 
 ### Running Locally
 
 1.  **start the backend server:**
+    ```sh
     cd backend
     npm start
+    ```
 
 2.  **start the frontend server:**
+    ```sh
     cd ..
     npm run dev
+    ```
 
 3.  **Access the application**
+    ```sh
     Open your browser and head to the address:
     http://localhost:5173.
+    ```
 
 ## Dockerization
 
 ### Backend
 
 1.  **Build the Docker image:**
+    ```sh
     cd backend
     docker build -t backend-app .
+    ```
 
 2.  **Run docker container:**
+    ```sh
     docker run -p 4141:4141 backend-app
+    ```
 
 ### Frontend
 
 1.  **Build the Docker image:**
+    ```sh
     cd ..
     docker build -t frontend-app .
+    ```
 
 2.  **Run docker container:**
+    ```sh
     docker run -p 80:80 frontend-app
+    ```

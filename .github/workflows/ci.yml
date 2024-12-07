@@ -13,28 +13,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    # - name: Run lint
-    #   run: npm run lint
+      # - name: Run lint
+      #   run: npm run lint
 
-    # - name: Run tests
-    #   run: npm test
+      # - name: Run tests
+      #   run: npm test
 
-    - name: Build project
-      run: npm run build
-    
-    - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main'
-      run: npm run deploy
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build project
+        run: npm run build
+
+      - name: Set up Git user
+        run: |
+          git config --global user.email "king7tee.godwin@gmail.com"
+          git config --global user.name "Tee-UX19"
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        run: npm run deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
