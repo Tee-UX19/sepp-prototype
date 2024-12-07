@@ -1,10 +1,10 @@
-import React from "react";
+// ProductPage.jsx
 import styles from "./ProductPage.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import handleAddToCart from "/src/utils/handleAddToCart.js";
+import PropTypes from 'prop-types'; // 1. Import PropTypes
 
 const ProductPage = ({
-    setCurrentPage,
     item,
     handleAddItemCounter,
     orderInfo,
@@ -198,6 +198,61 @@ const ProductPage = ({
             </div>
         </div>
     );
+};
+
+// Define propTypes for ProductPage component
+ProductPage.propTypes = {
+    item: PropTypes.shape({
+        image: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        subtitle: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        productInformation: PropTypes.shape({
+            allergens: PropTypes.arrayOf(PropTypes.string).isRequired,
+            ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+            hasNutrition: PropTypes.bool.isRequired,
+            nutritional: PropTypes.shape({
+                energy: PropTypes.shape({
+                    per100ml: PropTypes.string,
+                    per150ml: PropTypes.string,
+                    RI: PropTypes.string,
+                }),
+                energyCal: PropTypes.shape({
+                    per100ml: PropTypes.string,
+                    per150ml: PropTypes.string,
+                    RI: PropTypes.string,
+                }),
+                fats: PropTypes.shape({
+                    per100ml: PropTypes.string,
+                    per150ml: PropTypes.string,
+                    RI: PropTypes.string,
+                }),
+                saturatedFat: PropTypes.shape({
+                    per100ml: PropTypes.string,
+                    per150ml: PropTypes.string,
+                    RI: PropTypes.string,
+                }),
+                carbohydrates: PropTypes.shape({
+                    per100ml: PropTypes.string,
+                    per150ml: PropTypes.string,
+                    RI: PropTypes.string,
+                }),
+                sugars: PropTypes.shape({
+                    per100ml: PropTypes.string,
+                    per150ml: PropTypes.string,
+                    RI: PropTypes.string,
+                }),
+                fibres: PropTypes.shape({
+                    per100ml: PropTypes.string,
+                    per150ml: PropTypes.string,
+                    RI: PropTypes.string,
+                }),
+            }),
+        }).isRequired,
+    }).isRequired,
+    handleAddItemCounter: PropTypes.func.isRequired,
+    orderInfo: PropTypes.object.isRequired, // Define shape if more details are known
 };
 
 export default ProductPage;

@@ -1,5 +1,6 @@
 // src/pages/CheckoutPage.jsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getCheckoutData } from '/src/utils/getCheckoutData';
 
@@ -8,7 +9,7 @@ const CheckoutPage = ({ orderInfo }) => {
     const [orderUsers, setOrderUsers] = useState([]);
     const [deadline, setDeadline] = useState("");
 
-    const { orderId, userId } = orderInfo;
+    const { orderId } = orderInfo;
 
     useEffect(() => {
         const fetchCheckoutData = async () => {
@@ -60,7 +61,7 @@ const CheckoutPage = ({ orderInfo }) => {
             </button>
         </div>
     );
-}
+};
 
 const style = {
     container: {
@@ -82,6 +83,13 @@ const style = {
     checkoutButton: {
         width: '200px',
     }
-}
+};
+
+CheckoutPage.propTypes = {
+    orderInfo: PropTypes.shape({
+        orderId: PropTypes.number.isRequired,
+        userId: PropTypes.number.isRequired,
+    }).isRequired,
+};
 
 export default CheckoutPage;
