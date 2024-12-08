@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import ItemCard from './ItemCard';
-import getItems from '/src/utils/getItems';
+import fetchItems from '/src/utils/fetchItems';
 import './Catalogue.css';
 
 const Catalogue = ({
@@ -21,7 +21,7 @@ const Catalogue = ({
     useEffect(() => {
         const getItems = async () => {
             try {
-                const itemsData = await getItems();
+                const itemsData = await fetchItems();
                 setItems(itemsData);
                 setLoading(false);
             } catch {
