@@ -1,6 +1,7 @@
-// CataloguePage.jsx
+// /src/pages/CataloguePage.jsx
+
 import { useState } from "react";
-import Catalog from "/src/components/Catalog";
+import Catalogue from "/src/components/Catalogue";
 import FilterPanel from "/src/components/FilterPanel";
 import PropTypes from "prop-types";
 import "./CataloguePage.css";
@@ -36,7 +37,7 @@ const CataloguePage = ({
                         />
                     </div>
                     <div className="col-md-9">
-                        <Catalog
+                        <Catalogue
                             filters={filters}
                             setCurrentPage={setCurrentPage}
                             setCurrentItem={setCurrentItem}

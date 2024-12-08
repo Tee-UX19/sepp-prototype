@@ -1,4 +1,4 @@
-// src/utils/getCartCount.js
+// /src/utils/getCartCount.js
 
 const getCartCount = async (OrderInfo) => {
     try {

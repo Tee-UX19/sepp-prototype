@@ -1,3 +1,5 @@
+// /src/App.jsx
+
 import { useState, useEffect } from "react";
 import Header from "/src/components/Header";
 import CataloguePage from "./pages/CataloguePage";
@@ -37,16 +39,6 @@ const App = () => {
 
     const renderPage = () => {
         switch (currentPage) {
-            case "CataloguePage":
-                return (
-                    <CataloguePage
-                        setCurrentPage={setCurrentPage}
-                        setCurrentItem={setCurrentItem}
-                        handleAddItemCounter={handleAddItemCounter}
-                        orderInfo={orderInfo}
-                        itemSearch={itemSearch}
-                    />
-                );
             case "CartPage":
                 return (
                     <CartPage

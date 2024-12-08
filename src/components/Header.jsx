@@ -1,4 +1,5 @@
-// Header.jsx
+// /src/components/Header.jsx
+
 import { FaShoppingCart } from "react-icons/fa";
 import PropTypes from 'prop-types';
 import "./Header.css";
