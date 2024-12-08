@@ -1,4 +1,5 @@
-// ItemCard.jsx
+// /src/components/ItemCard.jsx
+
 import PropTypes from 'prop-types';
 import "/src/components/ItemCard.css";
 import handleAddToCart from "/src/utils/handleAddToCart.js";

@@ -1,8 +1,9 @@
-// ProductPage.jsx
+// /src/pages/ProductPage.jsx
+
 import styles from "./ProductPage.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import handleAddToCart from "/src/utils/handleAddToCart.js";
-import PropTypes from 'prop-types'; // 1. Import PropTypes
+import PropTypes from 'prop-types';
 
 const ProductPage = ({
     item,
@@ -252,7 +253,7 @@ ProductPage.propTypes = {
         }).isRequired,
     }).isRequired,
     handleAddItemCounter: PropTypes.func.isRequired,
-    orderInfo: PropTypes.object.isRequired, // Define shape if more details are known
+    orderInfo: PropTypes.object.isRequired,
 };
 
 export default ProductPage;

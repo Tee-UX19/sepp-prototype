@@ -1,4 +1,4 @@
-// src/utils/handleAddToCart.js
+// /src/utils/handleAddToCart.js
 
 const handleAddToCart = async (item, orderInfo, handleAddItemCounter) => {
     try {

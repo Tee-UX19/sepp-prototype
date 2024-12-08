@@ -1,6 +1,6 @@
-// src/utils/fetchItems.js
+// /src/utils/getItems.js
 
-const fetchItems = async () => {
+const getItems = async () => {
     try {
         const response = await fetch('http://localhost:4141/items'); 
 
@@ -17,4 +17,4 @@ const fetchItems = async () => {
     }
 };
 
-export default fetchItems;
+export default getItems;

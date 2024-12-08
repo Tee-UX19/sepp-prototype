@@ -1,9 +1,10 @@
-// FilterPanel.jsx
+// /src/components/FilterPanel.jsx
+
 import { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import ReactSlider from 'react-slider';
 import '/src/components/FilterPanel.css';
-import fetchItems from '/src/utils/fetchItems';
+import getItems from '/src/utils/getItems';
 
 const FilterPanel = ({ filters, onFilterChange }) => {
     const [localFilters, setLocalFilters] = useState({
@@ -21,7 +22,7 @@ const FilterPanel = ({ filters, onFilterChange }) => {
     useEffect(() => {
         const getItems = async () => {
             try {
-                const itemsData = await fetchItems();
+                const itemsData = await getItems();
                 setItems(itemsData);
             } catch (error) {
                 console.error("Error: ", error)

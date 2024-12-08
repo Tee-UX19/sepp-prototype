@@ -1,4 +1,5 @@
-// src/pages/CheckoutPage.jsx
+// /src/pages/CheckoutPage.jsx
+
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,10 +7,8 @@ import { getCheckoutData } from '/src/utils/getCheckoutData';
 import { FaCcPaypal } from "react-icons/fa";
 
 const CheckoutPage = ({ orderInfo }) => {
-
     const [orderUsers, setOrderUsers] = useState([]);
     const [deadline, setDeadline] = useState("");
-
     const { OrderId } = orderInfo;
 
     useEffect(() => {
