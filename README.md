@@ -81,28 +81,15 @@ This project is a prototype based on the shared grocery delivery service for Stu
 
 ## Dockerization
 
-### Backend
 
-1.  **Build the Docker image:**
+1.  **Build and start containers:**
     ```sh
-    cd backend
-    docker build -t backend-app .
+        docker-compose up --build #access app via localhost
     ```
 
-2.  **Run docker container:**
+2.  **Stop containers**
     ```sh
-    docker run -p 4141:4141 backend-app
+    docker-compose down
     ```
 
-### Frontend
 
-1.  **Build the Docker image:**
-    ```sh
-    cd ..
-    docker build -t frontend-app .
-    ```
-
-2.  **Run docker container:**
-    ```sh
-    docker run -p 80:80 frontend-app # access via localhost:80
-    ```
