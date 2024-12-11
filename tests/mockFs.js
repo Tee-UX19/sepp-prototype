@@ -1,12 +1,11 @@
 const fs = require("fs");
-const path = require("path");
 
 // this is a helpful function that makes the server use the fake data rather than the real stuff in the jest tests
 
 function mockFsSetup(mockData) {
     jest.mock("fs");
 
-    fs.readFileSync.mockImplementation((filePath, encoding) => {
+    fs.readFileSync.mockImplementation((filePath) => {
         if (filePath.includes("orderItems.json")) {
             return JSON.stringify(mockData.orderItems || []);
         }
