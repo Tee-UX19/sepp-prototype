@@ -27,9 +27,8 @@ jobs:
       - name: Run lint
         run: npm run lint
 
-      # Uncomment the following lines to run tests
-      # - name: Run tests
-      #   run: npm test
+      - name: Run tests
+        run: npx jest --ci
 
       - name: Build project
         run: npm run build
