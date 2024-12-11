@@ -1,4 +1,5 @@
-// FilterPanel.jsx
+// /src/components/FilterPanel.jsx
+
 import { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import ReactSlider from 'react-slider';
@@ -24,7 +25,7 @@ const FilterPanel = ({ filters, onFilterChange }) => {
                 const itemsData = await fetchItems();
                 setItems(itemsData);
             } catch (error) {
-                console.log("Error: ", error)
+                console.error("Error: ", error)
             }
         };
 

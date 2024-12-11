@@ -1,62 +1,64 @@
+/* /src/components/ItemCard.css */
+
 .card {
-  width: 100%;
-  max-width: 200px; /* Adjust the max width as needed */
-  margin: auto;
+    width: 100%;
+    max-width: 200px;
+    margin: auto;
 }
 
 .card-img-top {
-  width: 100%;
-  height: 8rem;
-  aspect-ratio: 1 / 1; /* Make the image square */
-  object-fit: cover; /* Ensure the image covers the entire area */
+    width: 100%;
+    height: 8rem;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
 }
 
 .card-body {
-  padding: 0.3rem; /* Reduce padding */
+    padding: 0.3rem;
 }
 
 .card-title {
-  font-size: 1.3rem; /* Reduce font size */
-  margin-bottom: 0.5rem; /* Reduce margin */
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
 }
 
 .card-text {
-  font-size: 1.1rem; /* Reduce font size */
-  margin-bottom: 0rem;
-  margin-left: 0.1rem;
+    font-size: 1.1rem;
+    margin-bottom: 0rem;
+    margin-left: 0.1rem;
 }
 
 .btn {
-  font-size: 0.9rem; /* Reduce font size */
-  padding: 0.25rem 0.5rem; /* Reduce padding */
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
 }
 
 .card-details {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0; /* Reduce padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
 }
 
 .quantity-controls {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .quantity {
-  margin: 0 10px;
-  font-size: 1.1rem;
+    margin: 0 10px;
+    font-size: 1.1rem;
 }
 
 .btn-blue {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.9rem;
-  cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
 }
 
 .btn-blue:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }

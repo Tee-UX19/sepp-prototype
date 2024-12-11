@@ -1,4 +1,4 @@
-// src/utils/getCartCount.js
+// /src/utils/getCartCount.js
 
 const getCartCount = async (OrderInfo) => {
     try {
@@ -20,11 +20,10 @@ const getCartCount = async (OrderInfo) => {
             );
         });
 
-        console.log("Successfully fetched cart count:", filteredData.length);
         return filteredData.length;
     } catch (err) {
         console.error("Error fetching cart count:", err);
-        throw err; // Re-throw the error to be handled by the caller
+        throw err;
     }
 };
 

@@ -72,10 +72,9 @@ The SSH Shared Grocery Delivery Service allows users to collaboratively manage g
     ```
 
 3.  **Access the application**
-    ```sh
     Open your browser and head to the address:
     http://localhost:5173.
-    ```
+    
 
 ## Dockerization
 

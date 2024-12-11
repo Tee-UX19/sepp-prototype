@@ -1,4 +1,4 @@
-// src/utils/handleAddToCart.js
+// /src/utils/handleAddToCart.js
 
 const handleAddToCart = async (item, orderInfo, handleAddItemCounter) => {
     try {
@@ -19,8 +19,6 @@ const handleAddToCart = async (item, orderInfo, handleAddItemCounter) => {
             throw new Error(errorData.error || "Failed to add item to cart.");
         }
         handleAddItemCounter();
-        const newOrderItem = await response.json();
-        console.log("Order Item added:", newOrderItem);
     } catch (error) {
         console.error("Error adding item to cart:", error);
     }

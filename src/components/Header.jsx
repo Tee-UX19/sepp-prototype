@@ -1,11 +1,11 @@
-// Header.jsx
+// /src/components/Header.jsx
+
 import { FaShoppingCart } from "react-icons/fa";
 import PropTypes from 'prop-types';
 import "./Header.css";
 
 const Header = ({ setCurrentPage, setItemSearch, cardCounter }) => {
     const handleLogoClick = () => {
-        console.log("Logo clicked");
         setCurrentPage("CataloguePage");
     };
 

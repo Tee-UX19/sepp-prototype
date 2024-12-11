@@ -1,4 +1,4 @@
-// src/utils/fetchItems.js
+// /src/utils/fetchItems.js
 
 const fetchItems = async () => {
     try {

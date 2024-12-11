@@ -1,11 +1,12 @@
-// Catalog.jsx
+// /src/components/Catalogue.jsx
+
 import { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import ItemCard from './ItemCard';
 import fetchItems from '/src/utils/fetchItems';
-import './Catalog.css';
+import './Catalogue.css';
 
-const Catalog = ({
+const Catalogue = ({
     filters,
     setCurrentPage,
     setCurrentItem,
@@ -79,7 +80,7 @@ const Catalog = ({
     }
 
     return (
-        <div className="catalog-container">
+        <div className="catalogue-container">
             <div className="row row-cols-1 row-cols-md-4 g-4">
                 {filteredItems.length > 0 ? (
                     filteredItems.map((item) => (
@@ -103,7 +104,7 @@ const Catalog = ({
     );
 };
 
-Catalog.propTypes = {
+Catalogue.propTypes = {
     filters: PropTypes.shape({
         category: PropTypes.string,
         brand: PropTypes.string,
@@ -122,4 +123,4 @@ Catalog.propTypes = {
     itemSearch: PropTypes.string.isRequired,
 };
 
-export default Catalog;
+export default Catalogue;

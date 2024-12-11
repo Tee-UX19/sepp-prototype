@@ -1,4 +1,5 @@
-// src/pages/CartPage.jsx
+// /src/pages/CartPage.jsx
+
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./CartPage.css";
@@ -9,7 +10,7 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
     const [activeToggle, setActiveToggle] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [visible, setVisible] = useState(false); // For the error transition
+    const [visible, setVisible] = useState(false);
 
     const { OrderID, UserID } = orderInfo;
 
@@ -72,7 +73,7 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
             } catch (error) {
                 console.error("Error fetching cart data:", error.message);
                 setError(error.message);
-                setVisible(true); 
+                setVisible(true);
             } finally {
                 setIsLoading(false);
             }
