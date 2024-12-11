@@ -4,6 +4,7 @@ import globals from 'globals'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+import jest from 'eslint-plugin-jest'
 
 export default [
   { ignores: ['dist'] },
@@ -39,12 +40,12 @@ export default [
     },
   },
   {
-    files: ['backend/**/*.js'], // Adjust if your backend files are located elsewhere
+    files: ['backend/**/*.js'],
     languageOptions: {
       ecmaVersion: 2020,
       parserOptions: {
         ecmaVersion: 'latest',
-        sourceType: 'commonjs', // CommonJS module system
+        sourceType: 'commonjs',
       },
       globals: {
         require: 'readonly',
@@ -54,7 +55,26 @@ export default [
       },
     },
     rules: {
-      // Optional: Add Node.js specific rules here if needed
+    },
+  },
+  {
+    files: ['tests/*.test.js', 'tests/mockFs.js'], 
+    languageOptions: {
+      ecmaVersion: 2020,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'commonjs',
+      },
+      globals: {
+        ...globals.node,
+        ...globals.jest,
+      },
+    },
+    plugins: {
+      jest,
+    },
+    rules: {
+      ...jest.configs.recommended.rules,
     },
   },
 ]
