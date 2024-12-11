@@ -1,10 +1,12 @@
 # SSH Shared Grocery Delivery Service Prototype
 
-This project is a prototype for a shared grocery delivery service, developed for a hypothetical organization called Student Smart Homes (SSH). This service is designed to be a new feature extending the SSH Hub, App, and Cloud, providing a convenient way for users to manage and share grocery deliveries.
+## Introduction
+
+This project is a prototype based on the shared grocery delivery service for Students Smart Hub. It’s a web service made with React for frontend ,styled with bootstrap and express for backend built on Vite. Users are able to browse and filter through a catalog of products from their chosen market, Add these items to a cart for a shared order, pay for each item they added and checkout the order once each person has paid via the PayPal payment gateway. By sharing orders, expenses on deliveries are saved. The finalized app has been deployed via Github Pages.
 
 ## Table of Contents
 
-- [Introduction](#introduction)
+- [Introduction](#Introduction)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Setup and Installation](#setup-and-installation)
@@ -14,13 +16,9 @@ This project is a prototype for a shared grocery delivery service, developed for
 - [Contributing](#contributing)
 - [License](#license) -->
 
-## Introduction
 
-The SSH Shared Grocery Delivery Service allows users to collaboratively manage grocery orders, share costs, and streamline the delivery process. This prototype demonstrates the core functionality of the service, including user management, order creation, item management, and checkout.
 
 ## Features
-
-- **User Management**: Manage users and their associated households.
 - **Order Management**: Create, view, and manage grocery orders.
 - **Item Management**: Browse and manage grocery items.
 - **Checkout**: Calculate and display the total cost for each user in a household.
@@ -106,5 +104,5 @@ The SSH Shared Grocery Delivery Service allows users to collaboratively manage g
 
 2.  **Run docker container:**
     ```sh
-    docker run -p 80:80 frontend-app
+    docker run -p 80:80 frontend-app # access via localhost:80
     ```
