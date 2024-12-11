@@ -31,6 +31,11 @@ The SSH Shared Grocery Delivery Service allows users to collaboratively manage g
 - **Frontend**: React, Vite, Bootstrap, React Icons
 - **Backend**: Node.js, Express, Body-Parser, CORS
 - **Database**: JSON files (for prototype purposes)
+- **Version Control**: Github
+- **Testing**: Jest
+- **Build Automation tool**: Vite
+- **Dependency Management**: Package lock JSON
+- **Continuous Integration & Deployment**: GIthub Actions
 - **Containerization**: Docker, Docker Compose
 
 ### Prerequisites
