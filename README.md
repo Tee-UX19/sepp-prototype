@@ -1,4 +1,5 @@
 # SSH Shared Grocery Delivery Service Prototype
+(The report for this prototype can be located in PrototypeReport.pdf)
 
 ## Introduction
 
