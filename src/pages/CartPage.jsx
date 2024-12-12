@@ -274,7 +274,6 @@ const CartPage = ({ setCurrentPage, orderInfo }) => {
                                 {/* Name and Details */}
                                 <div className="item-details">
                                     <h2>{item.name}</h2>
-                                    <p>Shelf Life: {item.shelfLife}</p>
                                     <p>Weight: {item.weight} | Calories: {item.calories}</p>
                                 </div>
                             </div>
